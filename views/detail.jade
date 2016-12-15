@@ -1,0 +1,105 @@
+extends layout
+
+block content
+    include modal
+    nav.top-nav
+        a(href="/")
+            img(class="logo small" src="/images/assets/logos/carShare_text_logo_white.png")
+        nav.desktop-nav
+        include desktop-nav
+        span(id="openBtn" aria-hidden="true")
+          svg(version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30')
+            rect(width='30' height='3')
+            rect(y='12' width='30' height='3')
+            rect(y='24' width='30' height='3')
+        span(id="closeBtn" aria-hidden="true")
+          svg(version="1.1" width='30px' height='30px')
+            line(x1="0" x2="30" y1="0" y2="30" stroke-width="3" stroke="white")
+            line(x1="30" x2="0" y1="0" y2="30" stroke-width="3" stroke="white")
+        div.compare-now-button
+          a(href="/list")
+            button.primary back to list
+    br
+    include slide-nav
+    if(typeof ServiceData !== 'undefined')
+      each service, i in ServiceData
+        div.eighty-px
+        div.center-column-black
+          div.detail-logo-header-container
+            img(src=service.logo)
+            h1 #{service.name}
+            div.action-button-container
+              a(href=service.url.signUp target="_blank")
+                button.primary Sign Up Now
+        div.masonry-layout     
+          div.masonry-layout__column
+            div.masonry-layout__panel
+              div(class="box grey-box three")
+                h3 Service Type
+                p #{service.serviceType}
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Locations
+                ul.details-list-type
+                  each val in service.cities
+                    li=val
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Vehicle Types
+                ul
+                  each val in service.vehicleTypes
+                    li= val
+          div.masonry-layout__column
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Sign-up and Membership Fees
+                p $#{service.signUpFee}
+                p $#{service.membershipFee} per month membership fee
+                p must be #{service.ageRequirement} to sign-up
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Sign-up Documents
+                ul
+                  each val in service.signUpDocs
+                    li=val
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Rental Prices
+                p From $#{service.avgPriceHour} per hour
+                p From $#{service.avgPriceDay} per day
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Gas and Tolls
+                p #{service.gas} with each rental
+                p #{service.tolls} with each rental
+          div.masonry-layout__column
+            div.masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Mileage Limit and Overage Fees
+                p #{service.milageLimtDay} miles per day
+                p Overage fee $#{service.overMilageCost} per mile
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Insurance and Roadside Assistance
+                p #{service.insurance}*
+                p #{service.roadsideAssistance}
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Car Pick Up
+                p #{service.carPickupProcess}
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Mobile App
+                p #{service.mobileApp}
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Rental Types
+                p #{service.hourlyRentals}
+                p #{service.overNightTrips}
+            .masonry-layout__panel
+              div( class="box grey-box three")
+                h3 Links
+                p #[a(href=service.url.home target="_blank") Home Page]
+                p #[a(href=service.url.signUp target="_blank") Sign-Up Page]
+                p #[a(href=service.url.terms target="_blank") Terms Page]
+        include disclaimer

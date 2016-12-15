@@ -1,0 +1,65 @@
+extends layout
+
+block content
+    include modal
+    div.section-two.alt
+        nav.top-nav
+            a(href="/")
+                img(class="logo small" src="/images/assets/logos/carShare_text_logo_white.png")
+            nav.desktop-nav
+            include desktop-nav
+        span(id="openBtn" aria-hidden="true")
+          svg(version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30')
+            rect(width='30' height='3' fill="white")
+            rect(y='12' width='30' height='3' fill="white")
+            rect(y='24' width='30' height='3' fill="white")
+        span(id="closeBtn" aria-hidden="true")
+          svg(version="1.1" width='30px' height='30px')
+            line(x1="0" x2="30" y1="0" y2="30" stroke-width="3" stroke="white")
+            line(x1="30" x2="0" y1="0" y2="30" stroke-width="3" stroke="white")
+        include slide-nav
+        div.eighty-px
+        div.section-two
+            div(class="center-column")
+                div.multi-box-column
+                    div(class="box two")
+                        h1 Contact Us
+                        h4 We’re always looking for feedback, whatever it is we'd love to hear it.
+                        hr.blue
+                        img(src="/images/assets/icons/message.svg")
+                    div(class="box two")
+                        ul#validation-summary
+                        h3 Send us a message
+                        br
+                        form#contact-form(novalidate)
+                            div.form-inputs
+                                label Name:
+                                p#error-message-name
+                                input(id="form-name" type='text' name="name" tabindex="1" placeholder="name" autofocus)
+                            div.form-inputs
+                                label Email:
+                                p#error-message-email
+                                input(id="form-email" type='email' name="email" placeholder="email" tabindex="2")
+                            br
+                            textarea(id="form-message" type='text' name="message" placeholder='say something...' cols='50' rows="10" tabindex="3")
+                            p#error-message-message
+                            button.primary(tabindex="4" type="submit") Submit
+                            //- .g-recaptcha(data-sitekey="6LePTw4UAAAAAIdvunzBBqO4xx4ZmSKT7chyl8KI")
+                            br
+                            h3#contact-feedback
+    div.eighty-px.alt
+    div.footer-section
+        div(class="center-column white")
+            div.multi-box-column
+                div(class="box three")
+                    div.social-icons
+                        p Find us on social media
+                        img(src="/images/assets/icons/square-facebook.svg")
+                        img(src="/images/assets/icons/square-twitter.svg")
+                        img(src="/images/assets/icons/mail-square-social-media.svg")
+                div(class="box three")
+                    div.copyright
+                        img(src=src="/images/assets/logos/car-share-logo.png")
+                div(class="box three")
+                    div.copyright
+                        p © 2016 CarShare Compare, All Rights Reserved.

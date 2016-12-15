@@ -1,0 +1,166 @@
+extends layout
+
+block content
+  include modal
+  nav.top-nav
+    a(href="/")
+        img(class="logo small" src="/images/assets/logos/carShare_text_logo_white.png")
+    nav.desktop-nav
+      ul
+        a(href="/")
+          li Home
+        a(href="list")
+          li Compare
+        a(href="about")
+          li About
+        a(href="contact")
+          li Contact
+    span(id="openBtn" aria-hidden="true")
+      svg(version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30')
+        rect(width='30' height='3')
+        rect(y='12' width='30' height='3')
+        rect(y='24' width='30' height='3')
+    span(id="closeBtn" aria-hidden="true")
+      svg(version="1.1" width='30px' height='30px')
+        line(x1="0" x2="30" y1="0" y2="30" stroke-width="3" stroke="white")
+        line(x1="30" x2="0" y1="0" y2="30" stroke-width="3" stroke="white")
+    div.compare-now-button
+      a(href="/list")
+        button.primary back to selection
+  br
+  include slide-nav
+  
+  div(class="center-column-black")
+      h1#compare-heading Compare Page
+  div(class="table-container")
+    if(typeof services !== 'undefined')
+      table
+        tr
+          each service, i in services
+            th
+              div.logo-container
+                a(href="/"+service.name)
+                  img(src=service.logo alt=service.name)
+                h3 #{service.name}
+                div.action-button-container
+                  a(href=service.url.signUp target="_blank")
+                    button.secondary Sign Up Now
+                  br
+                  a(href="/"+service.name) More Details >
+                button(class="close" title="remove "+service.name data-id=service._id) X
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Sign-up Fee
+        tr                 
+          each service, i in services  
+            td
+              div.feature-content
+                ul
+                  li #{service.signUpFee}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Membership Fee monthly
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li $#{service.membershipFee}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Price per Hour
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li $#{service.avgPriceHour}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Price per Day
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li $#{service.avgPriceDay}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Gas Cost
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li #{service.gas}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Tolls
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li #{service.tolls}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Mileage Limit Per Day
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li #{service.milageLimtDay}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Mile Overage fee
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li $#{service.overMilageCost}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Insurance
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li #{service.insurance}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Age Requirement
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li #{service.ageRequirement}
+        tr.tr-feature-head
+          td(colspan=services.length)
+            div.feature-headings
+              p Mobile App
+        tr
+          each service, i in services
+            td 
+              div.feature-content
+                ul
+                  li #{service.mobileApp}
+    else
+      div.center-column-black
+        hr
+        h1 uh oh, something went wrong. Sorry about that :(
+        h3 try refreshing the page
+  include disclaimer

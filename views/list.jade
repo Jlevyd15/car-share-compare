@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  include modal
+  nav.top-nav
+    a(href="/")
+        img(class="logo small" src="/images/assets/logos/carShare_text_logo_white.png")
+    nav.desktop-nav
+    include desktop-nav
+    span(id="openBtn" aria-hidden="true")
+      svg(version='1.1' x='0px' y='0px' width='30px' height='30px' viewBox='0 0 30 30' enable-background='new 0 0 30 30')
+        rect(width='30' height='3')
+        rect(y='12' width='30' height='3')
+        rect(y='24' width='30' height='3')
+    span(id="closeBtn" aria-hidden="true")
+      svg(version="1.1" width='30px' height='30px')
+        line(x1="0" x2="30" y1="0" y2="30" stroke-width="3" stroke="white")
+        line(x1="30" x2="0" y1="0" y2="30" stroke-width="3" stroke="white")
+    div.compare-now-button
+      //a(href="/compare")
+      button#goToComparePage.primary(title="select at least two services to start comparing") compare&nbsp;#[span#compareCounter]
+  br
+  include slide-nav
+  if(typeof ServiceData !== 'undefined')
+    div.list-container
+      div.center-column-black
+        h1 Compare side by side
+        p select up to four services then click the compare button above to see them side by side
+      div.features-column
+        div.multi-box-column
+          each service, i in ServiceData
+            div(id="#{service._id}" class="box two grey-box")
+              input(id="listChk-#{service._id}" type="checkbox")
+              label(for="listChk-#{service._id}")
+                span
+              h3 #{service.name}
+              div.list-logo-box
+                a(href="/"+service.name)
+                  img(src=service.logo alt="#{service.name}")
+              ul.spotlight-features
+                li Membership: $#{service.membershipFee} per month
+                li #{service.gas} with rental
+                li driving rates from $#{service.avgPriceDay} per day
+              div.action-button-container
+                a(href="/"+service.name class="plain-link" name=service._id) more details >
+                a(href=service.url.signUp target="_blank")
+                  button.secondary Sign Up Now
+    include disclaimer
+  else
+    div.center-column-black
+      hr
+      h1 uh oh, something went wrong. Sorry about that :(
+      h3 try refreshing the page

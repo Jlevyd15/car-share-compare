@@ -1,0 +1,16 @@
+div.modal-container
+  div.modal-alert
+    span.exclimation
+    input(class="close modal" title="Close window" tabindex="1" type="button" value="X")
+    div.modal-head
+      h1 Login
+    div.modal-body
+      div.loginContainer
+        div.formContainer
+            form(action="/admin" method="post")
+                div.usernameContainer
+                label username
+                input(title="username" type="text" tabindex="2")
+                label password
+                input(title="password" type="password" tabindex="3")
+                input.primary(type="submit" tabindex="4")

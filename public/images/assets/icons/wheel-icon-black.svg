@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg4172"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="wheel_logo.svg"
+   inkscape:export-filename="C:\Users\jlevy_000\Documents\GitHub\car-share-compare\public\images\assets\logos\wheel_logopng.png"
+   inkscape:export-xdpi="132.0826"
+   inkscape:export-ydpi="132.0826">
+  <defs
+     id="defs4174" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="-17.795575"
+     inkscape:cy="1160.755"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="715"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4177">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#453c3d;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       d="m 202.56208,124.46092 c -32.40292,0 -47.96037,-20.25182 -74.70493,-20.25182 -26.78506,0 -40.276831,20.25182 -74.704933,20.25182 m 90.906393,81.0073 c 0,0 0,-25.13251 0,-32.40292 0,-10.87118 9.15382,-20.25182 20.25182,-20.25182 5.02651,0 36.68011,0 36.68011,0 m -147.838323,0 c 0,0 33.784094,0 38.251647,0 11.685306,0 20.251826,9.03231 20.251826,20.25182 0,7.52153 0,32.40292 0,32.40292"
+       stroke-miterlimit="10"
+       id="path4725" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       inkscape:connector-curvature="0"
+       d="m 127.85715,35.867727 c -53.598481,0 -97.208761,43.60623 -97.208761,97.208763 0,53.60253 43.61028,97.20876 97.208761,97.20876 53.59848,0 97.20876,-43.60623 97.20876,-97.20876 0,-53.602533 -43.61028,-97.208763 -97.20876,-97.208763 z m 0,174.165693 c -42.431625,0 -76.956936,-34.52126 -76.956936,-76.95693 0,-42.435677 34.525311,-76.956938 76.956936,-76.956938 42.43162,0 76.95288,34.521261 76.95288,76.956938 0,42.43567 -34.52126,76.95693 -76.95288,76.95693 z"
+       stroke-miterlimit="10"
+       id="path4723" />
+    <circle
+       style="fill:none;stroke:#a40000;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       cx="127.85715"
+       cy="133.07649"
+       r="16.20146"
+       stroke-miterlimit="10"
+       id="circle4727" />
+  </g>
+</svg>
