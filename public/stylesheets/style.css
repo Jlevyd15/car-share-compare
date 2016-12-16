@@ -275,18 +275,27 @@ hr.blue {
 }*/
 .masonry-layout {
   display: flex;
-  flex-direction: row;
+  /*flex: 1;*/
+  flex-flow: row wrap;
   padding: 10px;
 }
+
 .masonry-layout__column {
-  display: flex;
+  /*display: flex;*/
+  margin: 0px auto;
   flex: 1;
-  flex-direction: column;
-  flex-wrap: wrap;
+  /*flex-direction: column;*/
+  /*flex-wrap: wrap;*/
+  justify-content: space-around;
 }
+
 .masonry-layout__panel {
-  width: 300px;
+  /*margin: 0px auto;*/
   margin: 5px;
+}
+
+.masonry-layout__panel li{
+  list-style: none;
 }
 
 /* ----------------- END flex box masonry layout --------------------*/
