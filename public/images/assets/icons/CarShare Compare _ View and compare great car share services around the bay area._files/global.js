@@ -40,8 +40,6 @@ $('a button:contains(\'Sign Up Now\')').on('click',function(){
   })(event);
 });
 
-$('')
-
 /* ----------- some UI stuff (smooth scrolling bookmarks) ---------------- */
 $("#section-two > div.center-column.down-arrow > a, .multi-box-column a[href='#section-two']").click(function(){
 	$('html, body').animate({
@@ -217,19 +215,6 @@ $(document).keydown(function(event) {
     $("#openBtn").show();
   }
 });
-
-
-/*-------------- dropdown menu for detail pages -------------------------*/
-
-$(".dropdownBtn").on('click', function(event) {
-  $(".dropdownContent").toggle();
-  // console.log(event.target);
-  // console.log(event.target.children[0]);
-  // if(event.target.children[0].tagName !== "div.dropdownContent") {
-  //   $(".dropdownContent").hide();
-  // }
-});
-
 
 /*----------------------------- End menu slider ------------------------------------*/
 
@@ -521,17 +506,12 @@ $("#contact-form").submit(function(event) {
   var message = $("#form-message").val();
   //if(Contact_Form.validateCaptcha() === true) {
   if(formSubmitReady){
-    ga('send', 'event', 'Contact Form', 'submit', {
-      hitCallback: function() {
-        alert("form submitting")
-        // Contact_Form.validateForm(name, email, message, event);
-      }
-    });
-      } else {
-        $('.modal-container').css('display', 'block');
-        $('.modal-head h3').text("Just a sec...");
-        $('.modal-body p').text("Please wait 10 seconds before submitting");
-        $('body').css('overflow', 'hidden');
+    Contact_Form.validateForm(name, email, message, event);
+  }else {
+    $('.modal-container').css('display', 'block');
+    $('.modal-head h3').text("Just a sec...");
+    $('.modal-body p').text("Please wait 10 seconds before submitting");
+    $('body').css('overflow', 'hidden');
   }
   //}else{
     //alert("Captcha not valid");

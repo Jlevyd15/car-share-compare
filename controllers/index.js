@@ -72,6 +72,7 @@ exports.getContactPage = function(req, res) {
 };
 
 exports.postContactMessage = function(req, res) {
+    console.log(req.connection.remoteAddress);
     var mailOpts, transporter;
     transporter = nodemailer.createTransport({
         service: 'Mailgun',
@@ -122,6 +123,12 @@ exports.captchaTest = function(req, res) {
     }else{
         res.send({"responseCode" : 1,"responseDesc" : "Failed captcha verification"});
     }
+}
+
+// for https cert challange
+exports.challengeRoute = function(req, res) {
+    console.log(req.params.id);
+    res.send(req.params.id)
 }
 
 //Handle 404 - not found

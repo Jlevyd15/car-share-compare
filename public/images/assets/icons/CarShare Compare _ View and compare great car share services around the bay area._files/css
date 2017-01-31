@@ -1,0 +1,24 @@
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Cabin'), local('Cabin-Regular'), url(https://fonts.gstatic.com/s/cabin/v10/kJXt72Gt1LyFMZcEKAAvlKCWcynf_cDxXwCLxiixG1c.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Cabin SemiBold'), local('Cabin-SemiBold'), url(https://fonts.gstatic.com/s/cabin/v10/bSicyj3YibVhVPhGZyWVI3YhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Cabin Bold'), local('Cabin-Bold'), url(https://fonts.gstatic.com/s/cabin/v10/haOjnueK8Or1ztuuRtr8dnYhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Cabin SemiBold Italic'), local('Cabin-SemiBoldItalic'), url(https://fonts.gstatic.com/s/cabin/v10/Sn-0zpaF2c3wYt9xdgoYFb3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}

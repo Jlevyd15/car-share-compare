@@ -53,3 +53,4 @@ Temporary Items
 /docs
 *.txt
 .env
+.env.swap

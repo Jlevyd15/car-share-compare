@@ -34,70 +34,70 @@ block content
         div.masonry-layout     
           div.masonry-layout__column
             div.masonry-layout__panel
-              div(class="box grey-box three")
+              div(class="box grey-box ")
                 h3 Service Type
                 p #{service.serviceType}
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Locations
                 ul.details-list-type
                   each val in service.cities
                     li=val
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Vehicle Types
                 ul
                   each val in service.vehicleTypes
                     li= val
           div.masonry-layout__column
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Sign-up and Membership Fees
                 p $#{service.signUpFee}
                 p $#{service.membershipFee} per month membership fee
                 p must be #{service.ageRequirement} to sign-up
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Sign-up Documents
                 ul
                   each val in service.signUpDocs
                     li=val
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Rental Prices
                 p From $#{service.avgPriceHour} per hour
                 p From $#{service.avgPriceDay} per day
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Gas and Tolls
                 p #{service.gas} with each rental
                 p #{service.tolls} with each rental
           div.masonry-layout__column
             div.masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Mileage Limit and Overage Fees
                 p #{service.milageLimtDay} miles per day
                 p Overage fee $#{service.overMilageCost} per mile
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Insurance and Roadside Assistance
                 p #{service.insurance}*
                 p #{service.roadsideAssistance}
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Car Pick Up
                 p #{service.carPickupProcess}
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Mobile App
                 p #{service.mobileApp}
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Rental Types
                 p #{service.hourlyRentals}
                 p #{service.overNightTrips}
             .masonry-layout__panel
-              div( class="box grey-box three")
+              div( class="box grey-box ")
                 h3 Links
                 p #[a(href=service.url.home target="_blank") Home Page]
                 p #[a(href=service.url.signUp target="_blank") Sign-Up Page]

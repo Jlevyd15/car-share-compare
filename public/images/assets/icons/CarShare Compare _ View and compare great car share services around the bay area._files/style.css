@@ -279,7 +279,7 @@ hr.blue {
   width: 100%;
 }*/
 .masonry-layout {
-  /*float: left;*/
+  float: left;
   display: flex;
   /*flex: 1;*/
   flex-flow: row wrap;
@@ -288,7 +288,6 @@ hr.blue {
 
 .masonry-layout__column {
   /*display: flex;*/
-  min-width: 300px;
   margin: 0px auto;
   flex: 1;
   /*flex-direction: column;*/
@@ -302,7 +301,6 @@ hr.blue {
 }
 
 .masonry-layout__panel li{
-  font-size: .75em;
   list-style: none;
 }
 
@@ -655,16 +653,14 @@ button:active{
   padding: 10px;
   /*top:50px;*/
   background-color: #37424b;
-  z-index: 500;
 }
 .dropdownContent a {
-  color: white;
   display: block;
 }
-.dropdownContent a:active .dropdownContent{
+.dropdownContent a:hover  .dropdownContent{
   display: block;
 }
-.dropdownBtn:active .dropdownContent {
+.dropdownBtn:hover .dropdownContent {
   display: block;
 }
 
@@ -1086,7 +1082,7 @@ input[type="checkbox"] + label span{
 }
 
 .detail-logo-header-container {
-  /*float: left;*/
+  float: left;
   margin-left: 25px;
 }
 
@@ -1096,10 +1092,5 @@ input[type="checkbox"] + label span{
   margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-.detail-aside-section-content {
-    float: left;
-    margin-left: 0px;
-  }
-}
+
 

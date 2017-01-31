@@ -28,6 +28,8 @@ module.exports = function(app){
     app.get('/:serviceName', indexController.getDetailPage);
     //app.post('/detail', indexController.postDetailData);
 
+    app.get('/.well-known/acme-challenge/:id', indexController.challengeRoute);
+
     //catch 404
     app.use('*', indexController.notFound);
 };

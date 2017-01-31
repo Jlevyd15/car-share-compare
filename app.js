@@ -21,11 +21,11 @@ app.set('port', (process.env.PORT || 5000));
 
 //set connection string to local db
 //var localMongoUri = 'mongodb://127.0.0.1/Services';
-
 mongoose.connect(process.env.MONGODB_URI);
+//mongoose.connect(process.env.MONGODB_URI);
 var db = mongoose.connection;
 db.on('error', function() {
-  throw new Error('unable to connect to database at ' + mongoUri);
+  throw new Error('unable to connect to database');
 });
 
 // view engine setup
