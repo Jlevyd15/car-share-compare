@@ -127,7 +127,7 @@ exports.captchaTest = function(req, res) {
 
 // for https cert challange
 exports.challengeRoute = function(req, res) {
-    var x = "3F1zK92exCyzmgG4ONH_QTnPGQ5Zdc0g48msVg-zUuE.75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc";
+    var x = "KN2V_GBlN0yaLSkEtJdsi2FWUAKNHBZY7AbKR7gpd98.75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc";
     console.log(req.params.id);
     res.send(x);
 }
