@@ -127,9 +127,8 @@ exports.captchaTest = function(req, res) {
 
 // for https cert challange
 exports.challengeRoute = function(req, res) {
-    var x = "KN2V_GBlN0yaLSkEtJdsi2FWUAKNHBZY7AbKR7gpd98.75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc";
     console.log(req.params.id);
-    res.send(x);
+    res.send(req.params.id+'.'+"75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc");
 }
 
 //Handle 404 - not found
