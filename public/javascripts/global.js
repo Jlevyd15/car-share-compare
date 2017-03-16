@@ -7,6 +7,9 @@ $(document).ready(function(){
   showModalOnFirstLoad();
 	enabledDisableCompareBtn();
   preventSpam();
+  if(window.location.pathname === "/") {
+    initMaps();
+  }
 });
 
 var formSubmitReady;
@@ -189,13 +192,15 @@ $('#openBtn').click(function(e){
      // $('body').css("overflow", "hidden");
 //this is allow user to click outside of the slider window to close it. User can also close clicking the X
 $(document).click(function(e) { //set event handler for click function and capture event param 
+    console.log(e.target.tagName)
     if(e.target.id !== 'openBtn' //we want to toggle(close) the slide menu for any event not related to slide menu
       && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'svg' 
       && e.target.tagName !== 'rect' && e.target.tagName !== 'line' 
       && e.target.tagName !== 'IMG' && e.target.tagName !== 'SELECT'
-      && e.target.tagName !== 'OPTION'){ // don't close the slide menu for events: menuBtn, form, INPUT & BUTTON
+      && e.target.tagName !== 'OPTION' && e.target.tagName !== 'A'  && e.target.tagName !== 'LI' ){ // don't close the slide menu for events: menuBtn, form, INPUT & BUTTON
       $('#slide-nav').removeClass("menu-container menu-container-active").addClass("menu-container");
       $("#closeBtn").hide();
+      $(".dropdownContent").hide();
       $("#openBtn").show();
     }
   });
@@ -523,8 +528,8 @@ $("#contact-form").submit(function(event) {
   if(formSubmitReady){
     ga('send', 'event', 'Contact Form', 'submit', {
       hitCallback: function() {
-        alert("form submitting")
-        // Contact_Form.validateForm(name, email, message, event);
+        // alert("form submitting")
+        Contact_Form.validateForm(name, email, message, event);
       }
     });
       } else {
@@ -537,3 +542,74 @@ $("#contact-form").submit(function(event) {
     //alert("Captcha not valid");
   //}
 });
+/* ---------------------------------------------- Google Maps --------------------------------------- */
+
+function initMaps() {
+  console.log("starting maps")
+  var center = new google.maps.LatLng(37.775,-122.42);
+  var mapOptions = {
+    zoom: 11,
+    center: center,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  }
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+  var contentString = '<div><h2>Testing Info Windows</h2></div>';
+
+  var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+  var markers = [];
+  var imgLogo = function(carShareName) { 
+    switch (carShareName) {
+      case 'Getaround':
+        return '<span id="mapsLogo"><img src="/images/assets/logos/getaround.png" alt="getaround.com" /></span>'
+        break;
+      case 'Zipcar':
+        return '<span id="mapsLogo"><img src="/images/assets/logos/zipcar.png" alt="zipcar.com" /></span>'
+        break;
+      case 'City CarShare':
+        return '<span id="mapsLogo"><img src="/images/assets/logos/cityshare.png" alt="gocarma.com" /></span>'
+        break;
+      case 'Turo':
+        return '<span id="mapsLogo"><img src="/images/assets/logos/turo.png" alt="turo.com" /></span>'
+        break;
+    }
+  };
+  function placeMarker(data, i) {
+      var coords = data[i].geom.coordinates;
+      var latLng = new google.maps.LatLng(coords[1],coords[0]);
+      // console.log(coords[1],coords[0]);
+      // console.log(data[i].carshare_organization)
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+      });
+      google.maps.event.addListener(marker, 'click', function(){
+        infowindow.close(); // Close previously opened infowindow
+        infowindow.setContent( "<div id='infowindow'>" + imgLogo(data[i].carshare_organization) + data[i].carshare_organization + "</div>");
+        infowindow.open(map, marker);
+      })
+    markers.push(marker)
+    // console.log(markers)
+    var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+  }
+
+  $.ajax({
+      type: "GET",
+      url: "https://data.sfgov.org/resource/3an4-9rx4.json",
+      data: {
+        // "$limit" : 20,
+        "$$app_token": "HGo4VdNPrnl94eNBpVtebfVJO"
+      },
+      dataType: "json",
+      success: function(data){
+        for(var i=0; i < data.length; i++){
+          placeMarker(data, i);
+        }
+      }
+    }).fail(function(jqXHR, status) { //if any error set an alert 
+      alert("error: " + status);
+    });
+
+}

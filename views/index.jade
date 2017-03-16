@@ -1,6 +1,8 @@
 extends layout
 
 block content
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGp344zG4RcLS5cyibWRoL4lYJvVpr_8E")
+    script(src="/javascripts/markerclusterer.js")
     div.section-one.car-dashboard-background
         a(href="/")
             img(class="logo" src="/images/assets/logos/carShare_text_logo_white.png")
@@ -129,6 +131,16 @@ block content
                         //- input.zipInput(placeholder="zipcode" type="number")
                         a(href="/list") 
                             button.primary Compare Now
+    div#section-three.section-two
+        div(class="center-column black")
+            div.multi-box-column
+                div(class="box two")
+                    #map
+                div(class="box two")
+                    h2 See the cars in your neighborhood!
+                    h4 This map shows some of the cars for rent by Zipcar, City CarShare and Getaround.
+                    a(href="/list") 
+                        button.primary Compare Now
     div.footer-section
         div(class="center-column white")
             div.multi-box-column

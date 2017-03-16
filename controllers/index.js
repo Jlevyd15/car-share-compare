@@ -49,10 +49,13 @@ exports.findAllServiceData = function(req, res) {
 exports.getDetailPage = function(req, res){
     var name = req.params.serviceName;
     ServiceData.find({'name': name}, function(err, results){
+        console.log(results.length)
         if(err){
             console.log("Error is " +err);
             res.send((err === null) ? { msg: ''} : { msg: 'Error, ' + err});        
-        }else{
+        }else if(results.length <= 0){
+            return res.send(404);
+        }else {
             return res.render('detail', {"ServiceData": results });
         }
     });
@@ -129,6 +132,10 @@ exports.captchaTest = function(req, res) {
 exports.challengeRoute = function(req, res) {
     console.log(req.params.id);
     res.send(req.params.id+'.'+"75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc");
+}
+
+exports.signUp = function(req, res) {
+    res.render('signup');
 }
 
 //Handle 404 - not found

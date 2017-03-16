@@ -3,7 +3,18 @@ module.exports = function(app){
 
     var indexController = require('./controllers/index');
 
-    app.get('/admin', indexController.getAdminPage);
+    //if we're running in production, redirect all to https
+    if(process.env.NODE_ENV !== 'development') {
+        app.get('*',function(req,res,next){
+            if(req.headers['x-forwarded-proto']!='https') {
+                res.redirect('https://carsharecompare.com'+req.url)
+            }else{
+                next() /* Continue to other routes if we're not redirecting */
+            }
+        })
+    }
+
+    // app.get('/admin', indexController.getAdminPage);
 
     //landing page
     app.get('/', indexController.getIndex);
@@ -23,6 +34,8 @@ module.exports = function(app){
     //app.post('/contact', indexController.contactFormInterval);
     app.post('/contact', indexController.postContactMessage);
     app.post('/captchaTest', indexController.captchaTest);
+
+    app.get('/signup', indexController.signUp);
 
     //detail page
     app.get('/:serviceName', indexController.getDetailPage);

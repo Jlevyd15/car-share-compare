@@ -58,7 +58,7 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
+if (process.env.NODE_ENV === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -86,5 +86,10 @@ require('./routes')(app);
 
 //start the app and listen on the specified port
 app.listen(app.get('port'), function(){
+  if(process.env.NODE_ENV === 'development') {
+    console.log('(Dev) NICE! We\'re running on port', app.get('port'));
+  } else {
     console.log('NICE! We\'re running on port', app.get('port'));
+  }
+
 });
