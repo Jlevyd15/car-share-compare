@@ -128,11 +128,11 @@ exports.captchaTest = function(req, res) {
     }
 }
 
-// for https cert challange
-exports.challengeRoute = function(req, res) {
-    console.log(req.params.id);
-    res.send(req.params.id+'.'+"75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc");
-}
+// // for https cert challange
+// exports.challengeRoute = function(req, res) {
+//     console.log(req.params.id);
+//     res.send(req.params.id+'.'+"75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc");
+// }
 
 exports.signUp = function(req, res) {
     res.render('signup');
