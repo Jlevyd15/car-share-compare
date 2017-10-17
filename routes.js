@@ -4,15 +4,15 @@ module.exports = function(app){
     var indexController = require('./controllers/index');
 
     //if we're running in production, redirect all to https
-    // if(process.env.NODE_ENV !== 'development') {
-    //     app.get('*',function(req,res,next){
-    //         if(req.headers['x-forwarded-proto']!='https') {
-    //             res.redirect('https://carsharecompare.com'+req.url)
-    //         }else{
-    //             next() /* Continue to other routes if we're not redirecting */
-    //         }
-    //     })
-    // }
+    if(process.env.NODE_ENV !== 'development') {
+        app.get('*',function(req,res,next){
+            if(req.headers['x-forwarded-proto']!='https') {
+                res.redirect('https://carsharecompare.com'+req.url)
+            }else{
+                next() /* Continue to other routes if we're not redirecting */
+            }
+        })
+    }
 
     // app.get('/admin', indexController.getAdminPage);
 

@@ -592,13 +592,13 @@ function initMaps() {
       })
     markers.push(marker)
     // console.log(markers)
-    // var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+    var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
   }
 
   $.ajax({
       type: "GET",
       url: "https://data.sfgov.org/resource/3an4-9rx4.json",
-      data: {``
+      data: {
         // "$limit" : 20,
         "$$app_token": "HGo4VdNPrnl94eNBpVtebfVJO"
       },
