@@ -49,6 +49,6 @@ Temporary Items
 # My App Stuff
 *.ps1
 /node_modules
-/docs
+/_docs
 .env
 .env.swap
