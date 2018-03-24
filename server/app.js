@@ -1,50 +1,33 @@
 var express = require('express')
 var app = express()
 var path = require('path')
-var favicon = require('serve-favicon')
+// var favicon = require('serve-favicon')
 var logger = require('morgan')
 var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 require('dotenv').config()
 
-/*var routes = require('./routes/index')*/
-/*var list = require('./routes/list')*/
-
-/*var compare = require('./routes/compare')
-var users = require('./routes/users')*/
-
 //set the port to run on one that is specified or 5000
 app.set('port', (process.env.PORT || 5000))
-
 
 //set connection string to local db
 //var localMongoUri = 'mongodb://127.0.0.1/Services'
 mongoose.connect(process.env.MONGODB_URI)
-//mongoose.connect(process.env.MONGODB_URI)
 var db = mongoose.connection
 db.on('error', function() {
 	throw new Error('unable to connect to database')
 })
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'jade')
-
-// uncomment after placing your favicon in /public
+// uncomment after placing favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+// set the publicly accessible path for assets
 app.use(express.static(path.join(__dirname, 'public')))
-
-
-
-/*app.use('/', routes)*/
-/*app.use('/list', list)
-*//*app.use('/compare', compare)
-app.use('/users', users)*/
 
 /*// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -86,8 +69,8 @@ require('./routes')(app)
 //start the app and listen on the specified port
 app.listen(app.get('port'), function(){
 	if(process.env.NODE_ENV === 'development') {
-		console.log('(Dev) NICE! We\'re running on port', app.get('port'))
+		console.log('(Dev) We\'re running on port', app.get('port'))
 	} else {
-		console.log('NICE! We\'re running on port', app.get('port'))
+		console.log('We\'re running on port', app.get('port'))
 	}
 })

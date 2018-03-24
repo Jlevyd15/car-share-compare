@@ -10,9 +10,12 @@
 
 
 ## Future road map
-
-- [ ] port server side rendered views from pub templates to react component based SPA
-- [ ] integrate react router
+- [ ] port pug templates to react components
+- [ ] add react router
 - [ ] introduce webpack v4 for build etc... remove gulp tasks
 - [ ] add Jest for testing
-- [ ] react server side render for landing page
+- [ ] write tests for both server and frontend code
+- [ ] react server side rendering for landing page
+- [ ] re-write the server using ES6 
+- [ ] add GraphQL to the REST API
+- [ ] add Flow typing

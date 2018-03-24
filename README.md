@@ -9,15 +9,21 @@ To start both the server and the frontend webpack build
 npm start
 ```
 
+- open localhost:5000
+
 To start only the frontend build
 ```javascript
 npm run start-frontend
 ```
 
+- open localhost:8080
+
 To start only the server
 ```javascript
 npm run start-server
 ```
+
+- open localhost:5000
 
 To start the test runner
 ```javascript
