@@ -30,7 +30,7 @@ module.exports = {
 				]
 			},
 			{
-				test: /\.css$/,
+				test: /\.(css|less)$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: [
@@ -40,7 +40,8 @@ module.exports = {
 								modules: true,
 								localIdentName: '[path][name]__[local]--[hash:base64:5]'
 							}
-						}
+						},
+						{ loader: 'less-loader' }
 					]
 				})
 			},
@@ -66,6 +67,6 @@ module.exports = {
 		path: path.resolve(__dirname, '../server/public')
 	},
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.js', '.jsx', '.less']
 	}
 }

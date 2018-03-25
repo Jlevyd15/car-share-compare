@@ -1,14 +1,38 @@
-import React from 'react'
-import style from './style.css'
+import React, { Component, Fragment } from 'react'
+import { routes } from './project.config'
+import { BrowserRouter, hashHistory, Switch, Route } from 'react-router-dom'
 
-export class App extends React.Component {
+/* pages */
+import Landing from './pages/Landing'
+import List from './pages/List'
+import Compare from './pages/Compare'
+import Detail from './pages/Detail'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
+
+import { Masthead } from './components/Masthead/'
+
+export class App extends Component {
 
 	render() {
-		console.log('style ', style)
 		return (
-			<div>
-				<h1 className={style['hello-world']}>Hello World!</h1>
-			</div>
+			<BrowserRouter history={hashHistory}>
+				<Fragment>
+					<Masthead />
+					<main>
+						<Switch>		
+							<Route exact path={routes.index} component={Landing} />
+							<Route exact path={routes.list} component={List} />
+							<Route exact path={routes.compare} component={Compare} />
+							<Route exact path={routes.about} component={About} />
+							<Route exact path={routes.contact} component={Contact} />
+							<Route path={routes.detail.route} component={Detail} />
+							<Route component={NotFound} />
+						</Switch>
+					</main>
+				</Fragment>
+			</BrowserRouter>
 		)
 	}
 }
