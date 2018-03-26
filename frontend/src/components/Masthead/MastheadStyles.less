@@ -1,0 +1,30 @@
+.container {
+	content: "";
+	display: flex;
+	clear: both;
+	
+	& > ul {
+		display: flex;
+		justify-content: flex-end;
+		padding: 0px;
+		margin: 0px;
+		width: 100%;
+		li:first-of-type {
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+	li {
+		list-style: none;
+	}
+	
+	// top level links
+	& > ul > li {
+		display: inline;
+		float: left;
+		a {
+			margin-right: 20px;
+			color: red;
+		}
+	}
+}

@@ -11,7 +11,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import NotFound from './pages/NotFound'
 
-import { Masthead } from './components/Masthead/'
+import { WrappedMasthead } from './components/Masthead/Masthead'
 
 export class App extends Component {
 
@@ -19,7 +19,7 @@ export class App extends Component {
 		return (
 			<BrowserRouter history={hashHistory}>
 				<Fragment>
-					<Masthead />
+					<WrappedMasthead />
 					<main>
 						<Switch>		
 							<Route exact path={routes.index} component={Landing} />

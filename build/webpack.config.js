@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+const env = process.NODE_ENV
+console.log('node_env env', env)
 module.exports = {
 	entry: {
 		cScMain: path.resolve(__dirname, '../frontend/src/index.js')
@@ -29,7 +31,7 @@ module.exports = {
 					}
 				]
 			},
-			{
+			env === 'production' ? {
 				test: /\.(css|less)$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
@@ -44,7 +46,21 @@ module.exports = {
 						{ loader: 'less-loader' }
 					]
 				})
-			},
+			} : // in development mode we don't want to extract the css because we loose hmr
+				{
+					test: /\.(css|less)$/,
+					use: [
+						{ loader: 'style-loader' },
+						{
+							loader: 'css-loader',
+							options: {
+								modules: true,
+								localIdentName: '[path][name]__[local]--[hash:base64:5]'
+							}
+						},
+						{ loader: 'less-loader' }
+					]
+				},
 			// TODO - add additional config object for global css
 			// TODO - add autoprefixer
 			// TODO - add loader for sass/less
