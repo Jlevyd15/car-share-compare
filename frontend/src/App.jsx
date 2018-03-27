@@ -2,6 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { routes } from './project.config'
 import { BrowserRouter, hashHistory, Switch, Route } from 'react-router-dom'
 
+// import the global styles
+import './styles/global'
+
 /* pages */
 import Landing from './pages/Landing'
 import List from './pages/List'

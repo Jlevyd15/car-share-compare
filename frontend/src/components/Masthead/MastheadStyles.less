@@ -2,24 +2,19 @@
 	content: "";
 	display: flex;
 	clear: both;
+	justify-content: space-between;
 	
-	& > ul {
-		display: flex;
-		justify-content: flex-end;
+	& nav > ul {
 		padding: 0px;
 		margin: 0px;
 		width: 100%;
-		li:first-of-type {
-			display: flex;
-			justify-content: space-between;
-		}
 	}
 	li {
 		list-style: none;
 	}
 	
 	// top level links
-	& > ul > li {
+	& nav > ul > li {
 		display: inline;
 		float: left;
 		a {
@@ -27,4 +22,11 @@
 			color: red;
 		}
 	}
+}
+
+.logo {
+	padding: 15px;
+	margin: 20px 0px 0px 20px;
+	height: 40px;
+	width: 250px;
 }

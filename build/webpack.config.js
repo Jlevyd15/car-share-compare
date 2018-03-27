@@ -64,7 +64,7 @@ module.exports = {
 			// TODO - add additional config object for global css
 			// TODO - add autoprefixer
 			// TODO - add loader for sass/less
-			{ test: /\.(png|jpg|gif)$/, use: [{ loader: 'file-loader', options: {} }] },
+			{ test: /\.(png|jpg|gif|svg)$/, use: [{ loader: 'file-loader', options: {} }] },
 		],
 	},
 	plugins: [
