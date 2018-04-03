@@ -1,7 +1,7 @@
 html, body {
   margin:0px;
   padding:0px;
-  font-family: 'Cabin', sans-serif;
+  font-family: @cabin-font-family;
   height: 100%;
 }
 
@@ -19,8 +19,8 @@ a.plain-link:hover{
 	cursor: pointer;
 }
 h1{
-	margin-top: 0px;
-	padding-top: 10px;
+	margin: 0px;
+	padding: 10px;
 }
 
 h2 {
@@ -30,3 +30,12 @@ h2 {
 h3 {
 	font-size: 1em;
 }
+
+/* fonts */
+@cabin-font-family: 'Cabin', Verdana, sans-serif;
+
+/* colors */
+@white: #FFFFFF;
+@black: black;
+@off-white-background: #F0F3F4;
+@btn-primary: #FF5252;

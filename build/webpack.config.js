@@ -25,8 +25,10 @@ module.exports = {
 					{ loader: 'babel-loader' }, 
 					{ 
 						loader: 'eslint-loader', 
-						options: { 
-							failOnError: true, formatter: require('eslint-formatter-pretty') 
+						options: {
+							quiet: true,
+							failOnError: true,
+							formatter: require('eslint-formatter-pretty')
 						} 
 					}
 				]

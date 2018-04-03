@@ -1,0 +1,45 @@
+@import '../../styles/global';
+
+.btn {
+    font-family: @cabin-font-family;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.primary {
+    border: none;
+    color: white;
+    background-color: @btn-primary;
+    cursor: pointer;
+}
+
+.secondary {
+    background: none;
+    color: @btn-primary;
+    border: solid 2px @btn-primary;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.primary:hover, .secondary:hover{
+    color:white;
+    background-color: @btn-primary;
+}
+
+button:active{
+    background-color: @btn-primary;
+}
+
+.primary:disabled{
+    color:rgba(255, 255, 255, 4);
+    background-color:rgba(255, 82, 82, .4);
+    cursor: not-allowed;
+}
+  
+@media (max-width: 768px) {
+    .box button {
+        width:100%;
+    }
+}

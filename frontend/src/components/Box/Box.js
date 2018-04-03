@@ -1,23 +1,20 @@
 import React, { Component } from 'react'
-import styles from './ButtonStyles'
+import styles from './BoxStyles'
 import PropTypes from 'prop-types'
 
 import { applyClasses } from '../../helper/stylesHelper'
 
-export class Button extends Component {
+export class Box extends Component {
 	render() {
 		return (
-			<button 
-				className={applyClasses(styles, this.props.classes)}
-				type="button"
-			>
+			<div className={applyClasses(styles, this.props.classes)}>
 				{this.props.children}
-			</button>
+			</div>
 		)
 	}
 }
 
-Button.propTypes = {
+Box.propTypes = {
 	classes: PropTypes.array,
 	children: PropTypes.node
 }

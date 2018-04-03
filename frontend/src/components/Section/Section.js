@@ -7,15 +7,11 @@ export class Section extends Component {
 	render() {
 		const { children, style } = this.props
 		return (
-			<div className={styles[`section-${style}`] + ' ' + styles['car-dashboard-background']}>
+			<div className={styles[`section-${style}`]}>
 				{children}
 			</div>
 		)
 	}
-}
-
-Section.defaultProps = {
-	style: 'one'
 }
 
 Section.propTypes = {
