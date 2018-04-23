@@ -9,27 +9,27 @@
 }
 
 .primary {
-    border: none;
+    border: solid 2px @primary-red;
     color: white;
-    background-color: @btn-primary;
+    background-color: @primary-red;
     cursor: pointer;
 }
 
 .secondary {
     background: none;
-    color: @btn-primary;
-    border: solid 2px @btn-primary;
+    color: @primary-red;
+    border: solid 2px @primary-red;
     font-weight: bold;
     cursor: pointer;
 }
 
 .primary:hover, .secondary:hover{
     color:white;
-    background-color: @btn-primary;
+    background-color: @primary-red;
 }
 
 button:active{
-    background-color: @btn-primary;
+    background-color: @primary-red;
 }
 
 .primary:disabled{

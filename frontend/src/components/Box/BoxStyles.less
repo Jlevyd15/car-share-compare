@@ -2,30 +2,37 @@
 
 .box{
     padding: 10px;
-    height: 100%;
-    margin: 10px;
+    // height: 100%;
+    // margin: 10px;
     font-size: 1.5rem;
     display: flex;
-}
-
-.bottom-spacer {
-    :first-child {
-        margin-bottom: 32px;
-    }
-}
-
-.center {
-    justify-content: center;
-    align-items: center;
-}
-
-.white {
-    color: @white;
+    flex: 0 1 auto;
 }
 
 .column {
     flex-wrap: wrap;
     flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.bottom-spacer {
+    margin-bottom: 16px;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.white {
+    color: @white;
 }
 
 /* TODO - legacy */

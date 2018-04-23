@@ -15,6 +15,6 @@ export class Section extends Component {
 }
 
 Section.propTypes = {
-	style: PropTypes.oneOf(['one', 'two', 'three']),
+	style: PropTypes.oneOf(['one', 'two', 'three', 'four', 'footer']),
 	children: PropTypes.node
 }

@@ -7,24 +7,37 @@ import styles from './MastheadStyles'
 import logoImg from '../../images/logos/carShare_text_logo_white.svg'
 
 export class Masthead extends Component {
+	constructor() {
+		super()
+		this.state = { subMenuOpen: false }
+		this.toggleSubMenu = this.toggleSubMenu.bind(this)
+	}
 	createMastheadLinks(links) {
 		return links && links.map(link => {
 			return <li key={link.id}><Link to={link.route}>{link.name}</Link></li>
 		})
 	}
 
+	toggleSubMenu(e) {
+		if (e && e.preventDefault) e.preventDefault()
+		if (e.keyCode === 27) this.setState({ subMenuOpen: !this.state.subMenuOpen })
+		this.setState({ subMenuOpen: !this.state.subMenuOpen })
+	}
+
 	render() {
+		const { subMenuOpen } = this.state
 		const detailLinks = this.createMastheadLinks(routes.detail.links)
 		return (
-			<div className={styles['container']}>
+			<div className={styles['container']} onKeyUp={this.toggleSubMenu}>
 				<Link to={routes.index}><img className={styles['logo']} src={logoImg} alt="Car Share Compare Logo" /></Link>
 				<nav>
 					<ul>
 						<li><Link to={routes.index}>Home</Link></li>
 						<li><Link to={routes.list}>Compare</Link></li>
-						{ detailLinks ? 
-							<li>Detail
-								<ul>
+						{ detailLinks ?
+							<li>
+								<a href="#" onClick={this.toggleSubMenu}>Detail</a>
+								<ul className={subMenuOpen ? styles['subMenuOpen'] : ''}>
 									{detailLinks}
 								</ul>
 							</li> : null
