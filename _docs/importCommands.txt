@@ -1,0 +1,20 @@
+Mongo Import Commands
+these are run from bash shell not mongo shell
+copy/paste does not work well.
+
+mongoimport --db Services --collection servicedatas --file /Users/jeremy/Documents/dev/github/car-share-compare/docs/query.json
+
+mongoimport —-host ds139715.mlab.com —-port 39715 —-db heroku_fclt22h3 —-collection servicedatas —-jsonArray —-username jlevyd15 —-password Penny@15 --file /Users/jeremy/Documents/dev/github/car-share-compare/docs/query.json
+
+mongorestore -h ds139715.mlab.com:39715 -d heroku_fclt22h3 -u heroku_fclt22h3 -p 19mskrn8pf6qasv3vhqpdlesn9 /Users/jeremy/Documents/data/backups/Services/servicedatas.bson
+
+
+
+
+mongodump —-gzip —-db Services —-out /Users/jeremy/Documents/data/backups
+
+db.servicedatas.updateMany({},{$rename:{"url.sign-up":"url.signUp"}})
+
+db.servicedatas.updateOne({"name":"Getaround"},{$set:{"avgPriceDay":"48.00"}})
+
+db.servicedatas.updateOne({"name":"Enterprise CarShare"},{$set:{"ageRequirement":"21+ or 18-20 requires .edu email"}})

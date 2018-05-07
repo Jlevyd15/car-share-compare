@@ -1,0 +1,56 @@
+@import '../../styles/global';
+
+.links {
+    & ul {
+        padding: 10px 10px 0 0;
+            margin: 0px;
+            width: 100%;
+                > li > a:hover {
+                    list-style: none;
+                    border-bottom: solid 5px transparent;
+                    border-bottom: solid 5px @primary-red;
+                }	
+                > li {
+                float: left;
+                list-style: none;
+                // target both the top level links and sub menu links
+                a {
+                    color: white;
+                    font-size: 1.5em;
+                    list-style: none;
+                    padding-top: 10px;
+                    margin-right: 20px;
+                    text-decoration: none;
+                }
+                a:hover {
+                    border-bottom: solid 5px @primary-red;
+                }
+                .subMenuOpen {
+                    display: block;
+                }
+                // second level detail links
+                ul {
+                    display: none;
+                    padding: 10px;
+                    position: absolute;
+                    margin: 0px;
+                    background-color: @dark-gray;
+                    > li {
+                        padding: 5px;
+                        list-style: none;
+                        a {
+                            padding: 0px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+@media screen and (max-width: @small-screen) {       
+    .links {
+        & > ul {
+            display: none;
+        }
+    }
+}

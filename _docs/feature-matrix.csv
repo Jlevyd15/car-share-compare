@@ -1,0 +1,86 @@
+,getaround,City CarShare,enterprise,turo,zipcar
+available cities,"San Francisco, Berkeley, Chicago, Oakland, Portland, Washington D.C. ",10 cities SF Bay Area,"Boise, 
+Boston, 
+Charleston, 
+Chicago, 
+Corvallis, 
+Dallas, 
+Denver, 
+Eugene, 
+Greenville, 
+Hoboken, 
+Honolulu, 
+Houston, 
+Jersey City, 
+Louisville, 
+New Brunswick, 
+New Orleans, 
+New York, 
+Oberlin, 
+Oxford, 
+Philadelphia, 
+Phoenix, 
+Salt Lake City, 
+San Francisco, 
+St. Louis, 
+St. Petersburg, 
+Tampa, 
+Washington D.C.","Atlanta, 
+Miami, 
+Boston, 
+San Diego, 
+Chicago, 
+San Francisco, 
+Denver, 
+Seattle, 
+Honolulu, 
+Washington D.C., 
+Houston, 
+Los Angeles","Atlanta, 
+Austin, 
+Baltimore, 
+Boston, 
+Chicago, 
+Dallas, 
+Denver, 
+Detroit, 
+Houston, 
+Los Angeles, 
+Miami, 
+Minneapolis, 
+Milwaukee, 
+New York, 
+Philadelphia, 
+Pittsburgh, 
+Portland, 
+Providence, 
+Sacramento, 
+San Diego, 
+San Francisco, 
+Seattle, 
+Washington DC."
+Unique features,pay with apple pay,"Maintenance, roadside assistance, rent in 15 min increments",roadside assistance,"Roadside assistance, offers delivery, no hourly rental rate",24 hour roadside assistance
+Car Owner,peer,Company,company,peer,company
+Sign up process (Required documents),"US drivers license, Pass a driver record check – International: Non-US driver's license driving record and driving record check","drivers license, credit/debit card, ","drivers license, major credit card, membership card is sent in the mail","social media account, driver license, picture, passport, credit card, last 4 digits of social security ","membership card is sent in the mail, "
+Vehicle Types,"Convertible, Exotic, Luxury, Snow, SUV, Truck, Van","3 door hatchback, 5 door hatchback, All Electric, All Wheel Drive, Capacity, Convertible, Hybrid/Plug-in hybrid, Minivan, Premium, SUV, Sedan, Truck, Wheelchair accessible","sedan, SUV, hybrid, luxury, pickup, cargo vans, electric","sedan, hybrid, convertible, SUV, minivan, trucks, cargo van","sedan, hybrid, convertible, SUV, minivan, trucks, cargo van"
+Sign up Fee,no,no,no,,25
+Membership Fee(dollars)/month,no membership fee,10,40,no membership fee,"5.80, 7.00, 50.00"
+Gas,gas not included,gas included,gas included,gas not included,gas included
+tolls,Automatically charged through the app,tolls are included,tolls not included,tolls not included,tolls not included
+avg. pricing /hour (prius),$6.00,$2 (+.35¢/mi),~5.50,N/A,"7.00, 7.00, 6.30"
+avg. pricing /day (prius),48,48,~70,~60,"80, 80, 71.10"
+Mileage limit per hour,"Standard: 25/hour
+Exotic: 15/hour",no milage limits,,,
+mileage limit per day (Break out if different for types of cars),"Standard: 200
+Exotic: 100",no milage limits,200,~200(owner chooses),180
+Over milage cost/mile,"Standard: $.50
+Exotic: $5.00",,0.45,0.75,0.45
+Book rental from app (iphone/android),Yes,yes,yes,yes,yes
+Insurance included or avaliable,Yes,yes,yes,yes,yes
+Age requirement ,19,21,18-20 requires .edu email,21,21
+"Car pick up process (Key, Locations, etc.)",Getaround Connect app,Key fob plus app,member card plus app,meet owner,member card or app
+Over night trips?,Yes,yes,yes,yes,yes
+URLS,,,,,
+Home page,https://www.getaround.com/,https://www.gocarma.com/,https://www.enterprisecarshare.com/us/en/home.html,https://turo.com/,http://www.zipcar.com/
+terms page,https://www.getaround.com/terms,https://www.gocarma.com/carshare/,https://www.enterprisecarshare.com/us/en/terms-of-use.html,https://turo.com/policies/terms,
+signup page,https://www.getaround.com/,https://denali.citycarshare.org/signup/signup.action#/sharelocal/contact,https://www.enterprisecarshare.com/us/en/become-a-member.html,https://turo.com/sign-up,https://members.zipcar.com/registration/#step

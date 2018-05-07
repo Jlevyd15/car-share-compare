@@ -1,0 +1,117 @@
+@import '../../styles/global';
+
+.box{
+    padding: 10px;
+    // height: 100%;
+    // margin: 10px;
+    font-size: 1.5rem;
+    display: flex;
+    flex: 0 1 auto;
+    width: 100%;
+}
+
+.column {
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+    padding: 20px;
+}
+
+.bottom-spacer {
+    margin-bottom: 16px;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.white {
+    color: @white;
+}
+
+/* TODO - legacy */
+
+.grey-box {
+    background-color: @off-white-background;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 .2em rgba(55, 66, 75, .7);
+}
+
+.two{
+    width: 550px;
+}
+
+.three{
+    width: 350px;
+}
+
+.four{
+    width: 200px;
+}
+
+.six{
+    width: 100px;
+}
+
+.box:nth-of-type(2){
+    text-align: center;
+}
+
+.box p {
+    margin: 0px;
+}
+.box h2 {
+    margin: 0px 0px 10px 0px;
+}
+
+.box h3 {
+    margin: 0px 0px 10px 0px;
+}
+
+.box button {
+    width:200px;
+    margin-bottom: 10px;
+}
+
+.center-column {
+    margin: auto;
+    text-align: center;
+}
+  
+.center-column-black {
+    color: @black;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    padding: 0px 10px 0px 10px;
+}
+
+.features-column{
+    width: 95%;
+    margin: auto;
+    text-align: center;
+}
+
+.center-column.down-arrow{
+    /*margin-top: -25px;*/
+    text-align: center;
+    background: @white;
+    width: 50px;
+    height: 50px;
+    opacity: .5;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+  
+.center-column.down-arrow:hover{
+    opacity: 1;
+}
