@@ -609,7 +609,7 @@ function initMaps() {
         }
       }
     }).fail(function(jqXHR, status) { //if any error set an alert 
-      alert("error: " + status);
+      console.log("error generating pins");
     });
 
 }
