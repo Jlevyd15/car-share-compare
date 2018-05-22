@@ -1,0 +1,69 @@
+@import '../../styles/global';
+
+.logo {
+	margin-left: 15px;
+	height: 40px;
+	width: 250px;
+	padding: 8px 0 0 10px;
+}
+
+.hamBtn() {
+	position: fixed;
+	display: none;
+	height: 50px;
+	width: 50px;
+	top: 0px;
+	right: 2px;	
+	z-index: 3;
+	border-radius: 2px;
+	background: rgba(0, 0, 0, .25);
+}
+
+.hamBtnImg() {
+	position: fixed;
+	right: 10px;
+	top: 10px;
+	border: none;
+	fill: white;
+}
+
+.closeBtn {
+	.hamBtn();
+	> img {
+		.hamBtnImg();
+	}
+}
+  
+.openBtn {
+	.hamBtn();
+    > img {
+		.hamBtnImg();
+	}
+}
+
+.dark-masthead {
+	z-index:2;
+	position:fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	height: 50px;
+	width: 100%;
+	background: linear-gradient(45deg,#263238 50%,#37424b 50%);
+	/*box-shadow: 0em .2em .3em rgba(55, 66, 75, .7);*/
+}
+
+.container {
+	position: absolute;
+	display: flex;
+	justify-content: space-between;
+	// padding: 20px 20px 0 0;
+	width: 100%;
+}
+
+@media screen and (max-width: @small-screen) {
+	.openBtn,
+	.closeBtn {
+		display: block;
+	}
+}

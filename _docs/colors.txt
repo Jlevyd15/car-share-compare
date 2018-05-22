@@ -1,0 +1,22 @@
+#Blue Background color
+	background-color: #00BCD4;
+		rgba(0, 188, 212, 1)
+
+#Primary Button color (red)
+	background-color: #FF5252;
+		rgba(255, 82, 82, 1)
+
+#Footer Section Colors
+	background: linear-gradient(45deg,#263238 50%,#37424b 50%);
+
+darker grey
+#263238
+rgba(38, 50, 56, 1)
+
+lighter gray
+#37424b
+rgba(55, 66, 75, 1)
+
+box color
+#F0F3F4
+

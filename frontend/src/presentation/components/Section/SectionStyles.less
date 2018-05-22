@@ -1,0 +1,46 @@
+.section-height(@height) {
+	min-height: @height;
+	padding: 20px;
+}
+
+.section-one {
+	.section-height(500px);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background:
+	linear-gradient(
+	rgba(0, 188, 212, 0.5),
+	rgba(0, 188, 212, 0.25)
+	),
+	url(../../images/background/car-dashboard.jpg);
+	background-position: center;
+}
+
+.section-two {
+	.section-height(400px);
+	background: url("../../images/background/floating-cars-background@2x.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+  }
+  
+  @media (max-width: 768px) {
+	.section-two {
+	  background-position: 50% 0%;
+	}
+  }
+
+.section-three {
+	.section-height(400px);
+	
+}
+
+.section-four {
+	.section-height(500px);
+	background-color: #00BCD4;
+}
+
+.section-footer {
+	// width: 100%;
+	font-size: 0.75rem;
+	background: linear-gradient(45deg,#263238 50%,#37424b 50%);
+}
