@@ -8,7 +8,9 @@ export class Image extends Component {
 	render() {
 		const { classes, imageSrc, altText } = this.props
 		return (
-			<img className={applyClasses(styles, classes)} src={imageSrc} alt={altText} />
+			<div className={applyClasses(styles, classes)}>
+				<img src={imageSrc} alt={altText} />
+			</div>
 		)
 	}
 }

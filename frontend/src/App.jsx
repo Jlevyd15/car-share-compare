@@ -1,12 +1,11 @@
 import React from 'react'
-import { BrowserRouter, hashHistory } from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
+import createHistory from 'history/createBrowserHistory'
 
-import { PageLayout } from './pages/PageLayout/PageLayout'
+import { PageLayout } from './presentation/pages/PageLayout/PageLayout'
 
 export const App = () => (
-	<BrowserRouter history={hashHistory}>
+	<ConnectedRouter history={createHistory()}>
 		<PageLayout />
-	</BrowserRouter>
+	</ConnectedRouter>
 )
-
-export default App

@@ -7,6 +7,10 @@ module.exports = {
         "jest": true,
     },
     "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "rules": {
+        "strict": 0
+    },
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -15,7 +19,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "babel"
     ],
     "rules": {
         "indent": [

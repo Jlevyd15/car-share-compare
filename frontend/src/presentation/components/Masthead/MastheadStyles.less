@@ -1,69 +1,70 @@
 @import '../../styles/global';
 
 .logo {
-	margin-left: 15px;
+	padding: 15px;
+	margin: 20px 0px 0px 20px;
 	height: 40px;
 	width: 250px;
-	padding: 8px 0 0 10px;
-}
-
-.hamBtn() {
-	position: fixed;
-	display: none;
-	height: 50px;
-	width: 50px;
-	top: 0px;
-	right: 2px;	
-	z-index: 3;
-	border-radius: 2px;
-	background: rgba(0, 0, 0, .25);
-}
-
-.hamBtnImg() {
-	position: fixed;
-	right: 10px;
-	top: 10px;
-	border: none;
-	fill: white;
-}
-
-.closeBtn {
-	.hamBtn();
-	> img {
-		.hamBtnImg();
-	}
-}
-  
-.openBtn {
-	.hamBtn();
-    > img {
-		.hamBtnImg();
-	}
-}
-
-.dark-masthead {
-	z-index:2;
-	position:fixed;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	height: 50px;
-	width: 100%;
-	background: linear-gradient(45deg,#263238 50%,#37424b 50%);
-	/*box-shadow: 0em .2em .3em rgba(55, 66, 75, .7);*/
 }
 
 .container {
 	position: absolute;
+	right: 0;
 	display: flex;
 	justify-content: space-between;
-	// padding: 20px 20px 0 0;
+	padding: 20px 20px 0 0;
 	width: 100%;
+	.links();
 }
 
-@media screen and (max-width: @small-screen) {
-	.openBtn,
-	.closeBtn {
-		display: block;
+.dark {
+    z-index: 2;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    height: 50px;
+    background: linear-gradient(45deg,#263238 50%,#37424b 50%);
+}
+
+.links() {
+    // top level links
+	& nav > ul {
+		padding: 0px;
+		margin: 0px;
+		width: 100%;
+			> li > a:hover {
+				list-style: none;
+				border-bottom: solid 5px transparent;
+				border-bottom: solid 5px @primary-red;
+			}	
+			> li {
+			float: left;
+			list-style: none;
+			// target both the top level links and sub menu links
+			a {
+				color: white;
+				font-size: 1.5em;
+				list-style: none;
+				padding-top: 10px;
+				margin-right: 20px;
+				text-decoration: none;
+			}
+			a:hover {
+				border-bottom: solid 5px @primary-red;
+			}
+			
+		}
 	}
+}
+  
+@media only screen and (max-width: 768px) {
+    .container {
+        display: none;
+    }
+    .desktop-nav {
+        display: none;
+    }
+    .nav-footer{
+        position: relative !important;
+    }
 }

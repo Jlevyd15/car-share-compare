@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { routes } from '../../../project.config'
-import { Switch, Route, withRouter } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 // import styles from './PageLayoutStyles'
 
 // import the global styles
@@ -23,7 +23,7 @@ export class PageLayout extends Component {
 	render() {
 		return (
 			<Fragment>
-				<WrappedMasthead route={this.props.location.pathname} />
+				<WrappedMasthead />
 				<main>
 					<Switch>	
 						<Route exact path={routes.index} component={Landing} />
@@ -39,8 +39,6 @@ export class PageLayout extends Component {
 		)
 	}
 }
-
-export const WrappedPageLayout = withRouter(PageLayout)
 
 PageLayout.propTypes = {
 	children: PropTypes.node

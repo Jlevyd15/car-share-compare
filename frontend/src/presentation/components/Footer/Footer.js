@@ -12,7 +12,7 @@ import carShareLogo from '../../images/logos/car-share-logo.png'
 
 export const Footer = ({ disclaimer }) => (
 	<Section style='footer'>
-		<Box classes={['box', 'row', 'white', 'center']}>
+		<Box classes={['box', 'row', 'white']}>
 			{ disclaimer ? 
 				<Fragment>
 					<p>© 2016 CarShare Compare, All Rights Reserved.</p>
@@ -24,20 +24,20 @@ export const Footer = ({ disclaimer }) => (
 					</div>
 				</Fragment> : 
 				<Fragment>
-					<Box classes={[styles['social-icons'], 'three', 'center']}>
+					<div className={styles['social-icons']}>
 						<Box classes={['row']}><p>Find us on social media</p></Box>
-						<Box classes={['box', 'center']}>
+						<Box classes={['box']}>
 							<Image imageSrc={facebookLogo} altText="" classes={['small']} />
 							<Image imageSrc={twitterLogo} caltText="" classes={['small']} />
 							<Image imageSrc={emailLogo} altText="" classes={['small']} />
 						</Box>
-					</Box>
-					<Box classes={[styles['copyright'], 'three', 'center']}>
+					</div>
+					<div className={styles['copyright']}>
 						<Image imageSrc={carShareLogo} altText="steering wheel" classes={['medium']} />
-					</Box>
-					<Box classes={[styles['copyright'], 'three', 'center']}>
+					</div>
+					<div className={styles['copyright']}>
 						<p>© 2016 CarShare Compare, All Rights Reserved.</p>
-					</Box>
+					</div>
 				</Fragment> 
 			}
 		</Box>
