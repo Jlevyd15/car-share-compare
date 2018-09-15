@@ -1,37 +1,34 @@
-import React, { Fragment, Component } from 'react'
+import React, { Fragment, PureComponent } from 'react'
+import PropTypes from 'prop-types'
+
 import { routes } from '../../../project.config'
 import { Link } from 'react-router-dom'
 import styles from './DropdownMenuStyles'
 
-export class DropdownMenu extends Component {
-	constructor() {
-		super()
-		this.state = { subMenuOpen: false }
-	}
+export class DropdownMenu extends PureComponent {
 	
 	createMastheadLinks(links) {
 		return links && links.map(link => {
 			return <li key={link.id}><Link to={link.route}>{link.name}</Link></li>
 		})
 	}
-
-	toggleSubMenu = e => {
-		if (e && e.preventDefault) e.preventDefault()
-		if (e.keyCode === 27) this.setState({ subMenuOpen: !this.state.subMenuOpen })
-		this.setState({ subMenuOpen: !this.state.subMenuOpen })
-	}
 	
 	render() {
-		const { subMenuOpen } = this.state
+		const { subMenuOpen, toggleSubMenu } = this.props
 		const detailLinks = this.createMastheadLinks(routes.detail.links)
 		return (
 			detailLinks ?
 				<Fragment>
-					<a href="#" onClick={this.toggleSubMenu}>Detail</a>
+					<a href="#" onClick={toggleSubMenu}>Detail</a>
 					<ul className={`${styles['container']} ${subMenuOpen ? styles['subMenuOpen'] : ''}`}>
 						{detailLinks}
 					</ul>
 				</Fragment> : null 
 		)
 	}
+}
+
+DropdownMenu.propTypes = {
+	toggleSubMenu: PropTypes.func.isRequired,
+	subMenuOpen: PropTypes.bool.isRequired
 }

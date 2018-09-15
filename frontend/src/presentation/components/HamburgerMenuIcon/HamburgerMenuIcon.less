@@ -1,32 +1,41 @@
-.closeBtn {
+.hamburger-btn {
     z-index: 3;
     display:none;
-    position:fixed;
+    position: fixed;
     right:10px;
     top:10px;
     border:none;
+    background-color: transparent;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
-    fill: white;
-}
-  
-.openBtn {
-    z-index:3;
-    position:fixed;
-    top:10px;
-    right:10px;
-    border:none;
-    cursor: pointer;
-    fill: white;
+    img {
+        display: block;
+        height: 30px;
+        width: 30px;
+        fill: white;
+        z-index: 3;
+        display:none;
+        position: fixed;
+        right:10px;
+        top:10px;
+        border:none;
+        cursor: pointer;
+    }
 }
 
 @media only screen and (min-width: 768px) {
-    .openBtn{
+    .hamburger-btn {
       display: none;
     }
   }
   
 @media only screen and (max-width: 768px) {
-    .openBtn{
-        display: block;
+    .hamburger-btn {
+				padding: 15px;
+        display: inline;
+        img {
+						display: block;
+        }
     }
 }

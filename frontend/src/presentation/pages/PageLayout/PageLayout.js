@@ -20,14 +20,18 @@ import NotFound from '../NotFound'
 import { WrappedMasthead } from '../../components/Masthead/Masthead'
 
 export class PageLayout extends Component {
+	constructor() {
+		super()
+		this.basePath = process.env.NODE_ENV === 'development' ? routes.apiURL.dev : routes.apiURL.prod
+	}
 	render() {
 		return (
 			<Fragment>
 				<WrappedMasthead />
 				<main>
 					<Switch>	
-						<Route exact path={routes.index} component={Landing} />
-						<Route exact path={routes.list} component={List} />
+						<Route exact path={routes.index} render={() => <Landing basePath={this.basePath} />} />
+						<Route exact path={routes.list} render={() => <List basePath={this.basePath} />} />
 						<Route exact path={routes.compare} component={Compare} />
 						<Route exact path={routes.about} component={About} />
 						<Route exact path={routes.contact} component={Contact} />

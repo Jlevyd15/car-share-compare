@@ -1,11 +1,10 @@
 import React from 'react'
-import { ConnectedRouter } from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
+import { ConnectedRouter } from 'connected-react-router'
 
 import { PageLayout } from './presentation/pages/PageLayout/PageLayout'
-
-export const App = () => (
-	<ConnectedRouter history={createHistory()}>
+console.log('history', history)
+export const App = ({ history }) => (
+	<ConnectedRouter history={history}>
 		<PageLayout />
 	</ConnectedRouter>
 )

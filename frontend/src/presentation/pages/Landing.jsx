@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { routerContainer } from '../containers/routerContainer'
 
 import { getMessage } from '../helper/messages'
 import { routes } from '../../project.config'
@@ -17,8 +18,7 @@ import priceTagImg from '../images/icons/2x_price_tag_usd.svg'
 export class Landing extends Component {
 	render() {
 		const { detail: { links } } = routes
-		const { history: { push } } = this.props
-
+		const { push } = this.props
 		return (
 			<Fragment>
 				<Section style="one">
@@ -29,9 +29,9 @@ export class Landing extends Component {
 								<p>{getMessage('landing', 'sectionOne', 'subTitle')}</p>
 							</Box>
 							<Box classes={['box', 'center', 'column', 'bottom-spacer']}>
-								<Button callback={() => push('/compare')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionOne', 'btnPrimary')}</Button>
+								<Button click={() => push('/compare')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionOne', 'btnPrimary')}</Button>
 								{/* TODO - how to push to hash? */}
-								<Button callback={() => push('#section-two')} classes={['btn', 'secondary']}>{getMessage('landing', 'sectionOne', 'btnSecondary')}</Button>
+								<Button click={() => push('#section-two')} classes={['btn', 'secondary']}>{getMessage('landing', 'sectionOne', 'btnSecondary')}</Button>
 							</Box>
 						</Box>
 					</div>
@@ -52,7 +52,7 @@ export class Landing extends Component {
 							<p>{getMessage('landing', 'sectionTwoSubSection2', 'subTitle')}</p>
 						</Box>
 						<Box classes={['box', 'center', 'column']}>
-							<Button callback={() => push('/compare')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionTwoSubSection2', 'btnPrimary')}</Button>
+							<Button click={() => push('/compare')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionTwoSubSection2', 'btnPrimary')}</Button>
 						</Box>
 					</Box>
 				</Section>
@@ -95,4 +95,4 @@ export class Landing extends Component {
 	}
 }
 
-export default Landing
+export default routerContainer(Landing)

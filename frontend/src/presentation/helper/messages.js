@@ -58,6 +58,17 @@ export const messages = {
 				title: 'Compare the top car share services'
 			}
 		]
+	},
+	list: {
+		sections: [
+			// section one ------------------------
+			{
+				id: 0,
+				name: 'sectionOne',
+				title: 'Compare side by side',
+				subTitle: 'select up to four services then click the compare button above to see them side by side'
+			}
+		]
 	}	
 }
 

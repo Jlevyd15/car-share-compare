@@ -7,9 +7,9 @@ export class Section extends Component {
 	render() {
 		const { children, style } = this.props
 		return (
-			<div className={styles[`section-${style}`]}>
+			<section className={styles[`section-${style}`]}>
 				{children}
-			</div>
+			</section>
 		)
 	}
 }

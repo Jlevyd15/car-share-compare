@@ -1,5 +1,6 @@
 var express = require('express')
 var app = express()
+var Router = express.Router()
 var path = require('path')
 // var favicon = require('serve-favicon')
 var logger = require('morgan')
@@ -64,7 +65,7 @@ app.use(function(err, req, res, next) {
 //require models file
 require('./models/Services')
 //require routes file for all routing
-require('./routes')(app)
+require('./routes')(app, Router)
 
 //start the app and listen on the specified port
 app.listen(app.get('port'), function(){

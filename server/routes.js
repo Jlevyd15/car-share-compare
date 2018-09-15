@@ -1,6 +1,7 @@
 //ROUTES
-module.exports = function(app){
-
+module.exports = function(app, Router){
+    
+	const subdomain = require('express-subdomain')
 	var indexController = require('./controllers/index')
 
 	//if we're running in production, redirect all to https
@@ -20,6 +21,8 @@ module.exports = function(app){
 	app.get('/', indexController.getIndex)
 
 	//list page
+	Router.get('/list', indexController.findAllServiceData)
+	app.use(subdomain('api', Router))
 	app.get('/list', indexController.findAllServiceData)
 
 	//compare page
@@ -42,6 +45,8 @@ module.exports = function(app){
 	//app.post('/detail', indexController.postDetailData)
 
 	app.get('/.well-known/acme-challenge/:id', indexController.challengeRoute)
+
+	app.get('/*', indexController.getIndex)
 
 	//catch 404
 	app.use('*', indexController.notFound)

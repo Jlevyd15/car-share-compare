@@ -1,10 +1,14 @@
-import getaroundLogo from './images/logos/getaround.png'
-import mavenLogo from './images/logos/maven.png'
-import enterpriseLogo from './images/logos/enterprise.png'
-import turoLogo from './images/logos/turo.png'
-import zipcarLogo from './images/logos/zipcar.png'
+import getaroundLogo from './presentation/images/logos/getaround.png'
+import mavenLogo from './presentation/images/logos/maven.png'
+import enterpriseLogo from './presentation/images/logos/enterprise.png'
+import turoLogo from './presentation/images/logos/turo.png'
+import zipcarLogo from './presentation/images/logos/zipcar.png'
 
 export const routes = {
+	apiURL: {
+		prod: 'http://api.carsharecompare.com',
+		dev: 'http://api.carsharecompare.com:5000'
+	},
 	index: '/',
 	list: '/list',
 	compare: '/compare',

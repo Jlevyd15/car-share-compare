@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const env = process.NODE_ENV
-console.log('node_env env', env)
+const env = process.env.NODE_ENV
 module.exports = {
 	entry: {
 		cScMain: path.resolve(__dirname, '../frontend/src/index.js')
@@ -13,7 +12,8 @@ module.exports = {
 	devServer: {
 		contentBase: path.resolve(__dirname, '../frontend/dist'),
 		hot: true,
-		overlay: true
+		overlay: true,
+		historyApiFallback: true
 	},
 	mode: 'development',
 	module: {
@@ -82,7 +82,8 @@ module.exports = {
 	],
 	output: {
 		filename: 'javascripts/[name].bundle.js',
-		path: path.resolve(__dirname, '../server/public')
+		path: path.resolve(__dirname, '../server/public'),
+		publicPath: '/'
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.less']

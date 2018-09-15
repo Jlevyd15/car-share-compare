@@ -1,8 +1,8 @@
 @import '../../styles/global';
 
 .logo {
-	padding: 15px;
-	margin: 20px 0px 0px 20px;
+	padding: 0 15px 15px 15px;
+	margin-left: 20px;
 	height: 40px;
 	width: 250px;
 }
@@ -56,9 +56,15 @@
 		}
 	}
 }
+.hamburger-menu-container {
+	display: none;
+}
   
 @media only screen and (max-width: 768px) {
-    .container {
+		.hamburger-menu-container {
+			display: block;
+		}
+    .container nav {
         display: none;
     }
     .desktop-nav {

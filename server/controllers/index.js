@@ -11,6 +11,31 @@ const ApiResponse = require('../helper/ApiResponse')
 
 let contactFormSubmitReady = false
 
+const mockData = 
+	[
+		{
+			'_id': '57abde66036e3a3f9dadb712',
+			'name': 'Getaround',
+			'logo': '/images/assets/logos/getaround.png',
+			'membershipFee': '0',
+			'avgPriceDay': '48.00',
+			'gas': 'gas not included',
+			'url': {
+				'signUp': 'https://www.getaround.com/'
+			}
+		},
+		{
+			'_id': '57abde66036e3a3f9dadb712',
+			'name': 'Getaround',
+			'logo': '/images/assets/logos/getaround.png',
+			'membershipFee': '0',
+			'avgPriceDay': '48.00',
+			'gas': 'gas not included',
+			'url': {
+				'signUp': 'https://www.getaround.com/'
+			}
+		}
+	]
 //get the index page when user navigates to '/' route
 exports.getIndex = (req, res, next) => {
 	var options = {
@@ -58,21 +83,24 @@ exports.postCompareData = (req, res) => {
 
 //get all services for list page
 exports.findAllServiceData = (req, res) => {
-	ServiceData.find({},
-		{
-			'_id': 1,
-			'name': 1, 
-			'logo': 1, 
-			'membershipFee': 1, 
-			'avgPriceDay': 1, 
-			'gas': 1, 
-			'url.signUp': 1
-		}, (err, results) => {
-			// console.log('results are ' + results)
-			res.json(ApiResponse.buildRes({ 'ServiceData': results }))
-			// return res.render('list', { 'ServiceData': results })
-		}
-	)
+	// ServiceData.find({},
+	// 	{
+	// 		'_id': 1,
+	// 		'name': 1, 
+	// 		'logo': 1, 
+	// 		'membershipFee': 1, 
+	// 		'avgPriceDay': 1, 
+	// 		'gas': 1, 
+	// 		'url.signUp': 1
+	// 	}, (err, results) => {
+	// 		// console.log('results are ' + results)
+	// 		res.set({ 'Access-Control-Allow-Origin': '*' })
+	// 		res.json(ApiResponse.buildRes({ 'ServiceData': results }))
+	// 		// return res.render('list', { 'ServiceData': results })
+	// 	}
+	// )
+	res.set({ 'Access-Control-Allow-Origin': '*' })
+	res.json(ApiResponse.buildRes({ ServiceData: mockData }))
 }
 
 //get by id for detail page

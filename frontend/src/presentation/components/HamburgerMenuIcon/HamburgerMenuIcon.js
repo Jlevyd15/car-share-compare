@@ -1,31 +1,30 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
 
 import styles from './HamburgerMenuIcon.less'
 import openBtn from '../../images/icons/hamburgerOpenBtn.svg'
 import closeBtn from '../../images/icons/hamburgerCloseBtn.svg'
 import { Image } from '../Image/Image'
+import { Button } from '../Button/Button'
 
-export class HamburgerMenuIcon extends Component {
-	constructor() {
-		super()
-		this.state = { open: false }
-	}
-	
-	handleClick = () => {
-		this.setState({ open: !this.state.open })
-	}
+export class HamburgerMenuIcon extends PureComponent {
 
 	renderBtnIcon = () => {
-		const { open } = this.state
-		return open ? <Image imageSrc={openBtn} altText="steering wheel" classes={['medium', styles['openBtn']]} /> :
-			<Image imageSrc={closeBtn} altText="steering wheel" classes={['medium', styles['closeBtn']]} />
+		const { menuOpen } = this.props
+		return menuOpen ? <Image imageSrc={closeBtn} altText="steering wheel" classes={['medium']} /> : 
+			<Image imageSrc={openBtn} altText="steering wheel" classes={['medium']} />
 	}
 
 	render() {
 		return (
-			<button onClick={this.handleClick}>
+			<Button click={this.props.click} classes={[styles['hamburger-btn']]}>
 				{this.renderBtnIcon()}
-			</button>
+			</Button>
 		)
 	}
+}
+
+HamburgerMenuIcon.propTypes = {
+	click: PropTypes.func.isRequired,
+	menuOpen: PropTypes.bool
 }

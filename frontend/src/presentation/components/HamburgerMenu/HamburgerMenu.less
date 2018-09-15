@@ -1,18 +1,19 @@
 .menu-container {
-    z-index:1;
-    position:absolute;
-    top:0px;
-    right:0px;
-    width:200px;
-    height:100%;
+    z-index: 1;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width: 200px;
+    height: 100%;
     transform: translateX(300px);
     transition: all 400ms;
 }
 
 .menu-container-active{
     z-index: 1;
-    height: 100%;
-    position: absolute;
+		height: 100%;
+		width: 100%;
+    position: fixed;
     top: 0px;
     right: 0px;
     background: rgba(0,0,0,0.8);
@@ -34,43 +35,43 @@
     overflow-x: hidden;
 }
   
-//   .nav-bar>ul {
-//     margin-top:50px;
-//     padding:0px;
-//   }
-//   .nav-bar li {
-//     list-style-type: none;
-//     border-bottom:1px solid gray;
-//     margin:0px;
-//   }
-//   .nav-bar li > select {
-//     background-color:#37424b;
-//     border:none;
-//     width:100%;
-//     height:45px;
-//     text-align:left;
-//     margin-left:0px;
-//     cursor: pointer;
-//     color:white;
-//     font-size: 1.2em;
-//     font-weight: 700;
-//     padding-left:10px;
-//     /*-webkit-appearance:none;*/
-//   }
+  .nav-bar > ul {
+    margin-top: 70px;
+    padding: 0px;
+  }
+  .nav-bar li {
+    list-style-type: none;
+    border-bottom: 1px solid gray;
+    margin: 0px;
+  }
+  .nav-bar li > select {
+    background-color: #37424b;
+    border: none;
+    width: 100%;
+    height: 45px;
+    text-align: left;
+    margin-left: 0px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding-left: 10px;
+    /*-webkit-appearance: none;*/
+  }
   
 .nav-bar li {
-    background-color:#37424b;
-    width:100%;
-    height:45px;
+    background-color: #37424b;
+    width: 100%;
+    height: 45px;
     cursor: pointer;
-    padding:10px 0px 0px 5px;
+    padding: 10px 0px 0px 5px;
 }
   
 .nav-bar a {
     font-size: 1.5em;
-    color:white;
+    color: white;
     text-decoration: none;
-    height:45px;
+    height: 45px;
 }
   
 .nav-bar li:hover, .nav-bar li.selected {
@@ -78,8 +79,8 @@
 }
   
 .nav-footer {
-    position:fixed;
-    bottom:0px;
-    margin-top:50px;
-    color:white;
+    position: fixed;
+    bottom: 0px;
+    margin-top: 50px;
+    color: white;
 }
