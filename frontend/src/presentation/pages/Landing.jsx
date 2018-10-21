@@ -16,6 +16,14 @@ import locationImg from '../images/icons/2x_location.svg'
 import priceTagImg from '../images/icons/2x_price_tag_usd.svg'
 
 export class Landing extends Component {
+	constructor() {
+		super()
+		this.sectionTwoRef = React.createRef()
+	}
+	scrollToElement = element => {
+		// debugger // eslint-disable-line
+		if (element && element.current) element.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+	}
 	render() {
 		const { detail: { links } } = routes
 		const { push } = this.props
@@ -29,9 +37,9 @@ export class Landing extends Component {
 								<p>{getMessage('landing', 'sectionOne', 'subTitle')}</p>
 							</Box>
 							<Box classes={['box', 'center', 'column', 'bottom-spacer']}>
-								<Button click={() => push('/compare')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionOne', 'btnPrimary')}</Button>
+								<Button click={() => push('/list')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionOne', 'btnPrimary')}</Button>
 								{/* TODO - how to push to hash? */}
-								<Button click={() => push('#section-two')} classes={['btn', 'secondary']}>{getMessage('landing', 'sectionOne', 'btnSecondary')}</Button>
+								<Button click={() => this.scrollToElement(this.sectionTwoRef)} classes={['btn', 'secondary']}>{getMessage('landing', 'sectionOne', 'btnSecondary')}</Button>
 							</Box>
 						</Box>
 					</div>
@@ -40,7 +48,7 @@ export class Landing extends Component {
 				<Section style="two">
 					<Box styles={{ justifyContent: 'space-around' }} classes={['box', 'center', 'column', 'bottom-spacer']}>
 						<Box classes={['bottom-spacer']}>
-							<h2 id='section-two'>{getMessage('landing', 'sectionTwo', 'title')}</h2>
+							<h2 id='section-two' ref={this.sectionTwoRef}>{getMessage('landing', 'sectionTwo', 'title')}</h2>
 							<p>{getMessage('landing', 'sectionTwo', 'subTitle')}</p>
 						</Box>					
 						<Box classes={['bottom-spacer']}>
@@ -52,7 +60,7 @@ export class Landing extends Component {
 							<p>{getMessage('landing', 'sectionTwoSubSection2', 'subTitle')}</p>
 						</Box>
 						<Box classes={['box', 'center', 'column']}>
-							<Button click={() => push('/compare')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionTwoSubSection2', 'btnPrimary')}</Button>
+							<Button click={() => push('/list')} classes={['btn', 'primary']}>{getMessage('landing', 'sectionTwoSubSection2', 'btnPrimary')}</Button>
 						</Box>
 					</Box>
 				</Section>

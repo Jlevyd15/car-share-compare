@@ -1,34 +1,33 @@
-.container {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    left: 95%;
-}
+@checkbox-size: 30px;
 
+.container {
+    width: @checkbox-size;
+    height: @checkbox-size;
+}
 
 input[type="checkbox"]{
     visibility: hidden;
     position: absolute;
-    height: 20px;
-    width: 20px;
+    height: @checkbox-size;
+    width: @checkbox-size;
 }
 
-label > input[type="checkbox"] + span {
+.check-label > input[type="checkbox"] + span {
     /*margin:-1px 4px 0 0;*/
     // padding: 2px;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: @checkbox-size;
+    height: @checkbox-size;
     border: 2px solid grey;
     border-radius: 3px;
     cursor:pointer;
     pointer-events: none;
-    // box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 
-label > input[type="checkbox"]:checked + span {
+.check-label > input[type="checkbox"]:checked + span {
     background: url(../../images/icons/icon-checkmark.svg);
-    background-size: 20px 20px;
+    background-size: 25px 27px;
     background-repeat: no-repeat;
 }

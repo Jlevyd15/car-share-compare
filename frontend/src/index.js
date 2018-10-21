@@ -5,7 +5,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
 
-import { App } from './App.jsx'
+import App from './App'
 import { rootReducer } from './data/rootReducer'
 
 const history = createBrowserHistory()
@@ -16,9 +16,24 @@ const store = (initialState = {}) => createStore(
 	composeEnhancers(applyMiddleware(routerMiddleware(history)))
 )
 
-ReactDom.render(
-	<Provider store={store()}>
-		<App history={history}/>
-	</Provider>,
-	document.getElementById('root')
-)
+const render = () => {
+	ReactDom.render(
+		<Provider store={store()}>
+			<App history={history}/>
+		</Provider>,
+		document.getElementById('root')
+	)
+}
+
+render()
+
+if (module.hot) {
+	module.hot.accept('./App', function () {
+		console.log('Accepting the updated printMe module!')
+		render()
+	})
+	module.hot.accept('./data/rootReducer', () => {
+		const nextRootReducer = require('./data/rootReducer')
+		store.replaceReducer(nextRootReducer)
+	})
+}

@@ -1,7 +1,9 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { popupContainer } from '../../containers/popupContainer'
+import Overlay from '../Overlay/Overlay'
+import { scrollBlocker } from '../../helper/scroll-blocker'
 
 import styles from './PopupStyles.less'
 export class Popup extends Component {
@@ -10,13 +12,22 @@ export class Popup extends Component {
 		this.popupRoot = document.getElementById('popup-portal-root')
 		this.appRoot = document.getElementById('root')
 		this.el = document.createElement('div')
-		this.el.classList.add(styles['container'])
 	}
     
 	componentDidMount() {
 		this.popupRoot.appendChild(this.el)
-		const header = this.popupRoot.querySelector('h3')
-		if (header) header.focus()
+		setTimeout(() => {
+			const header = this.popupRoot.querySelector('h3')
+			if (header) {
+				header.focus()
+			}
+		}, 200)
+	}
+
+	componentDidUpdate(prevProps) {
+		const { open } = this.props
+		if (open !== prevProps.open && open) scrollBlocker() 
+		else scrollBlocker('add') 
 	}
     
 	componentWillUnmount() {
@@ -24,18 +35,27 @@ export class Popup extends Component {
 		// TODO - focus back to previously focused el
 	}
 	render() {
+		const { width, height, open, children } = this.props
 		return (
-			createPortal(
-				this.props.children,
-				this.el
-			)
+			<React.Fragment>
+				<Overlay open={open} />
+				{ open ? createPortal(
+					<div className={styles['container']} style={{ height, width }}>
+						{children}
+					</div>,
+					this.el
+				) : null}
+			</React.Fragment>
 		)
 	}
 }
 
 Popup.propTypes = {
+	id: PropTypes.string.isRequired,
 	open: PropTypes.bool,
-	children: PropTypes.any
+	children: PropTypes.any,
+	height: PropTypes.number,
+	width: PropTypes.number
 }
 
-export const wrappedPopup = popupContainer(Popup)
+export default popupContainer(Popup)

@@ -1,3 +1,5 @@
+@import '../../styles/global.less';
+
 .menu-container {
     z-index: 1;
     position: fixed;
@@ -10,13 +12,6 @@
 }
 
 .menu-container-active{
-    z-index: 1;
-		height: 100%;
-		width: 100%;
-    position: fixed;
-    top: 0px;
-    right: 0px;
-    background: rgba(0,0,0,0.8);
     transition: all 400ms;
     transform: translateX(0px);
 }
@@ -30,8 +25,7 @@
     right: 0px;
     width: 200px;
     height: 100%;
-    background-color: #263238;
-    overflow-y: scroll;
+    background-color: @nav-dark;
     overflow-x: hidden;
 }
   
@@ -45,7 +39,7 @@
     margin: 0px;
   }
   .nav-bar li > select {
-    background-color: #37424b;
+    background-color: @nav-light;
     border: none;
     width: 100%;
     height: 45px;
@@ -60,7 +54,7 @@
   }
   
 .nav-bar li {
-    background-color: #37424b;
+    background-color: @nav-light;
     width: 100%;
     height: 45px;
     cursor: pointer;
@@ -75,7 +69,7 @@
 }
   
 .nav-bar li:hover, .nav-bar li.selected {
-    border-left: 5px solid #FF5252;
+    border-left: 5px solid @primary-blue;
 }
   
 .nav-footer {

@@ -5,35 +5,53 @@ import { getMessage } from '../helper/messages'
 
 import { Section } from '../components/Section/Section'
 import { Box } from '../components/Box/Box'
-import { WithRouterCard } from '../components/Card/Card'
+import Card from '../components/Card/Card'
 
-import { Button } from '../components/Button/Button'
-import { WrappedPopupLink } from '../components/PopupLink/PopupLink'
-import { Popup } from '../components/Popup/Popup'
-import { InfoPopup } from '../components/InfoPopup/InfoPopup'
+import Popup from '../components/Popup/Popup'
+import { popupContainer } from '../containers/popupContainer'
+import InfoPopup from '../components/InfoPopup/InfoPopup'
 
 export class List extends Component {
 	constructor() {
 		super()
-		this.state = { loading: true, content: null }
+		this.state = { loading: true, content: [] }
 	}
 
 	componentDidMount() {
-		axios.get(`${this.props.basePath}/list`)
-			.then(res => this.setState({ content: res.data, loading: false }))
-			.catch(err => console.error('error retreiving data', err))
+		// TODO - move into a saga
+		// debugger //eslint-disable-line no-debugger
+		this.fetchData()
+		this.props.openPopup('list-initial-info')
 	}
 
-	getPageContent = basePath => (this.state.loading ? <p>Loading</p> :
-		this.state.content.data.ServiceData.map(serviceData => (
-			<Box data={serviceData} classes={['box', 'row', 'grey-box', 'two', 'bottom-spacer']} key={serviceData._id}>
-				<WithRouterCard data={serviceData} basePath={basePath} />
-			</Box>))
-	)
+	// TODO - async await not working
+	fetchData() {
+		// try {
+		// 	const result = await axios.get(`${this.props.basePath}/list`)
+		// 	if (result.error) {
+		// 		throw new Error('error fetching service data', result.error)
+		// 	}
+		// 	this.setState({ content: result, loading: false })
+		// } catch (error) {
+		// 	throw new Error('error fetching service data', error)
+		// }
+		axios.get(`${this.props.basePath}/list`)
+			.then(({ data }) => {
+				if (data['error']) console.log('error fetching service data', data['error'])
+				this.setState({ content: data['data']['ServiceData'], loading: false })
+			})
+			.catch(err => {
+				throw new Error('error fetching service data', err)
+			})
+	}
 
-	handleOpenPopup = ({ openPopup, closePopup, open }) => {
-		if (open) closePopup()
-		else openPopup()
+	getPageContent = basePath => {
+		if (this.state.content.length && !this.state.loading) {
+			return (this.state.content.map(serviceData => (
+				<Card key={serviceData._id} data={serviceData} basePath={basePath} />)))
+		} else {
+			return (<p>Loading</p>)
+		}
 	}
 
 	render() {
@@ -52,18 +70,17 @@ export class List extends Component {
 						{this.getPageContent(this.props.basePath)}
 					</Box>
 				</Section>
-				<WrappedPopupLink
-					id="test-popup-1"
-					render={args => (
-						<Fragment>
-							<Button click={() => this.handleOpenPopup(args)}>Open a popup</Button>
-							{args['open'] ? <Popup><InfoPopup /></Popup> : null}
-						</Fragment>
-					)}
-				/>
+				<Popup id="list-initial-info">
+					<InfoPopup 
+						id="list-initial-info"
+						icon="info"
+						heading={getMessage('list', 'list-initial-info', 'title')}
+						body={getMessage('list', 'list-initial-info', 'body')}
+					/>
+				</Popup>
 			</Fragment>
 		)
 	}
 }
 
-export default List
+export default popupContainer(List)

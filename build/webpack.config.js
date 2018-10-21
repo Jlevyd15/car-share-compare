@@ -7,7 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const env = process.env.NODE_ENV
 module.exports = {
 	entry: {
-		cScMain: path.resolve(__dirname, '../frontend/src/index.js')
+		cScMain: ['@babel/polyfill', path.resolve(__dirname, '../frontend/src/index.js')]
 	},
 	devServer: {
 		contentBase: path.resolve(__dirname, '../frontend/dist'),
@@ -63,6 +63,10 @@ module.exports = {
 						{ loader: 'less-loader' }
 					]
 				},
+			// {
+			// 	test: /^((?!global).)*(\.css|\.less)$/,
+			// 	use: ['style-loader', 'css-loader', 'less-loader']
+			// },
 			// TODO - add additional config object for global css
 			// TODO - add autoprefixer
 			// TODO - add loader for sass/less

@@ -8,8 +8,11 @@ const request = require('request')
 const path = require('path')
 
 const ApiResponse = require('../helper/ApiResponse')
+// const Scraper = require('../helper/Scraper')
 
 let contactFormSubmitReady = false
+
+const isProd = process.env.NODE_ENV === 'production'
 
 const mockData = 
 	[
@@ -25,9 +28,9 @@ const mockData =
 			}
 		},
 		{
-			'_id': '57abde66036e3a3f9dadb712',
-			'name': 'Getaround',
-			'logo': '/images/assets/logos/getaround.png',
+			'_id': 'test123',
+			'name': 'Maven',
+			'logo': '/images/assets/logos/maven.png',
 			'membershipFee': '0',
 			'avgPriceDay': '48.00',
 			'gas': 'gas not included',
@@ -82,7 +85,7 @@ exports.postCompareData = (req, res) => {
 }
 
 //get all services for list page
-exports.findAllServiceData = (req, res) => {
+exports.findAllServiceData = async (req, res) => {
 	// ServiceData.find({},
 	// 	{
 	// 		'_id': 1,
@@ -99,7 +102,11 @@ exports.findAllServiceData = (req, res) => {
 	// 		// return res.render('list', { 'ServiceData': results })
 	// 	}
 	// )
-	res.set({ 'Access-Control-Allow-Origin': '*' })
+
+	// const scraper = new Scraper()
+	// const html = await scraper.requestPage({ url: 'https://www.getaround.com/tour' })
+	// console.log('html', html)
+	if (!isProd) res.set({ 'Access-Control-Allow-Origin': '*' })
 	res.json(ApiResponse.buildRes({ ServiceData: mockData }))
 }
 

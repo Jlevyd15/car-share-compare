@@ -51,4 +51,3 @@ Temporary Items
 /node_modules
 /_docs
 .env
-.env.swap

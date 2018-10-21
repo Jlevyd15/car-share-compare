@@ -63,15 +63,33 @@ export const messages = {
 		sections: [
 			// section one ------------------------
 			{
-				id: 0,
+				id: 1,
 				name: 'sectionOne',
 				title: 'Compare side by side',
 				subTitle: 'select up to four services then click the compare button above to see them side by side'
+			}, 
+			{
+				id: 2, 
+				name: 'list-services-info',
+				title: 'You\'re about to leave CarShareCompare',
+				body: 'by clicking the continue button, you will leaving our page. To stay here, click cancel'
+			},
+			{
+				id: 3,
+				name: 'list-initial-info',
+				title: 'Let\'s Get Started.',
+				body: 'Use the check boxes to select services to compare, you can select up to 4 services. When you\'re finished, click compare at the top'
 			}
 		]
-	}	
+	}
 }
 
+/**
+ * 
+ * @param {string} page name of the page
+ * @param {string} section name property within the object
+ * @param {string} key name of the property within the object to access the content
+ */
 export const getMessage = (page, section, key = 'title') => {
 	// debugger //eslint-disable-line
 	return page && messages[page].sections.reduce((accum, msgSectionObj) => {

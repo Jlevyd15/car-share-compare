@@ -9,38 +9,44 @@
 }
 
 .primary {
-    border: solid 2px @primary-red;
+    border: solid 2px @primary-blue;
     color: white;
-    background-color: @primary-red;
+    background-color: @primary-blue;
     cursor: pointer;
 }
 
 .secondary {
     background: none;
-    color: @primary-red;
-    border: solid 2px @primary-red;
+    color: @primary-blue;
+    border: solid 2px @primary-blue;
     font-weight: bold;
     cursor: pointer;
 }
 
-.primary:hover, .secondary:hover{
-    color:white;
-    background-color: @primary-red;
+.secondary:active, .secondary:hover {
+    text-decoration: underline solid @primary-blue;
 }
 
-.primary:active,
-.secondary:active {
-    background-color: @primary-red;
+.primary:active, .primary:hover {
+	text-decoration: underline solid @white;
 }
 
-.primary:disabled{
-    color:rgba(255, 255, 255, 4);
-    background-color:rgba(255, 82, 82, .4);
+.primary:disabled {
+    color: @primary-blue;
+    background-color: @primary-blue-disabled;
     cursor: not-allowed;
+}
+
+.utility {
+	padding: 0px;
+	border: 0px;
+	color: transparent;
+	width: 100%;
+	height: 100%;
 }
   
 @media (max-width: 768px) {
-    .box button {
-        width:100%;
-    }
+	.box button {
+			width:100%;
+	}
 }

@@ -27,9 +27,9 @@ export const Footer = ({ disclaimer }) => (
 					<div className={styles['social-icons']}>
 						<Box classes={['row']}><p>Find us on social media</p></Box>
 						<Box classes={['box']}>
-							<Image imageSrc={facebookLogo} altText="" classes={['small']} />
-							<Image imageSrc={twitterLogo} caltText="" classes={['small']} />
-							<Image imageSrc={emailLogo} altText="" classes={['small']} />
+							<Image imageSrc={facebookLogo} altText="Link to Facebook" classes={['small']} />
+							<Image imageSrc={twitterLogo} altText="Link to Twitter" classes={['small']} />
+							<Image imageSrc={emailLogo} altText="Link to email" classes={['small']} />
 						</Box>
 					</div>
 					<div className={styles['copyright']}>

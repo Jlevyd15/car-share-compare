@@ -6,7 +6,7 @@ import { applyClasses } from '../../helper/stylesHelper'
 
 export class Image extends Component {
 	render() {
-		const { classes, imageSrc, altText } = this.props
+		const { classes = [], imageSrc, altText } = this.props
 		return (
 			<div className={applyClasses(styles, classes)}>
 				<img src={imageSrc} alt={altText} />

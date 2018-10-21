@@ -2,30 +2,29 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './CheckboxStyles.less'
+import { fieldContainer } from '../../containers/fieldContainer'
 
-export class Checkbox extends Component {
-	constructor() {
+class Checkbox extends Component {
+	constructor({ id, create }) {
 		super()
-		this.state = {
-			checked: false
-		}
+		create(id, { value: false })
 	}
 	
-	handleClick = (e) => {
-		console.log('clicked checkbox!', e.target, e.target.value)
-		this.setState({ checked: !this.state.checked })
+	handleClick = () => {
+		const { id, value, change } = this.props
+		change(id, { value: !value })
 	}
 
 	render() {
-		const { id } = this.props
+		const { id, value } = this.props
 		return (
 			<div id={id} className={styles['container']}>
-				<label for={`listChk-${id}`}>
+				<label className={styles['check-label']} htmlFor={`listChk-${id}`}>
 					<input 
 						id={`listChk-${id}`} 
 						onClick={this.handleClick} 
 						type="checkbox" 
-						value={this.state.checked} 
+						value={value} 
 					/>
 					<span></span>
 				</label>
@@ -37,3 +36,5 @@ export class Checkbox extends Component {
 Checkbox.propTypes = {
 	id: PropTypes.string
 }
+
+export default fieldContainer(Checkbox)

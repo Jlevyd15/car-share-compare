@@ -6,19 +6,19 @@ html, body {
 }
 
 a {
-	color: #00B7FF;
+	color: @primary-blue;
 }
 
-a.plain-link {
+a {
 	text-decoration: none;
 	line-height: 1.7;
 }
 
-a.plain-link:hover{
+a:hover {
 	text-decoration: underline;
 	cursor: pointer;
 }
-h1{
+h1 {
 	margin: 0px;
 	padding: 10px;
 }
@@ -37,10 +37,17 @@ h3 {
 /* colors */
 @white: #FFFFFF;
 @black: black;
+@blue: #00B7FF;
 @off-white-background: #F0F3F4;
-@primary-red: #FF5252;
-@dark-gray:  #37424b;
+@primary-blue: #00BCD4;
+@primary-blue-disabled: rgba(0, 188, 212, 0.4);
+@nav-dark: #263238;
+@nav-light: #37424b;
 
 /* Screen Sizes */
 @small-screen: 768px;
 // @tablet-screen: '@media screen and (max-width: 768px) and (min-width: '
+
+.block-scroll {
+	overflow: hidden;
+}

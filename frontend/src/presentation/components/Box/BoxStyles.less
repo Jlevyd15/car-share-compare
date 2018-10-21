@@ -1,12 +1,12 @@
 @import '../../styles/global';
 
-.box{
+.box {
     padding: 10px;
     // height: 100%;
     // margin: 10px;
     font-size: 1.5rem;
     display: flex;
-    flex: 0 1 auto;
+		flex: 0 1 auto;
 }
 
 .column {
@@ -18,7 +18,10 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 20px;
+}
+
+.align-left {
+	justify-content: left;
 }
 
 .bottom-spacer {
@@ -35,6 +38,14 @@
     color: @white;
 }
 
+.pad-sm {
+	padding: 5px;
+}
+
+.pad-lrg {
+	padding: 20px;
+}
+
 /* TODO - legacy */
 
 .grey-box {
@@ -44,23 +55,23 @@
     box-shadow: 0 0 .2em rgba(55, 66, 75, .7);
 }
 
-.two{
+.two {
     width: 550px;
 }
 
-.three{
+.three {
     width: 350px;
 }
 
-.four{
+.four {
     width: 200px;
 }
 
-.six{
+.six {
     width: 100px;
 }
 
-.box:nth-of-type(2){
+.box:nth-of-type(2) {
     text-align: center;
 }
 
@@ -93,13 +104,13 @@
     padding: 0px 10px 0px 10px;
 }
 
-.features-column{
+.features-column {
     width: 95%;
     margin: auto;
     text-align: center;
 }
 
-.center-column.down-arrow{
+.center-column.down-arrow {
     /*margin-top: -25px;*/
     text-align: center;
     background: @white;
@@ -110,6 +121,6 @@
     border-bottom-right-radius: 5px;
 }
   
-.center-column.down-arrow:hover{
+.center-column.down-arrow:hover {
     opacity: 1;
 }

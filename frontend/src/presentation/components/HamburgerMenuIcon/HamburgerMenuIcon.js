@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
 import styles from './HamburgerMenuIcon.less'
-import openBtn from '../../images/icons/hamburgerOpenBtn.svg'
+import openBtn from '../../images/icons/hamburgerOpenBtn1.svg'
 import closeBtn from '../../images/icons/hamburgerCloseBtn.svg'
 import { Image } from '../Image/Image'
 import { Button } from '../Button/Button'
