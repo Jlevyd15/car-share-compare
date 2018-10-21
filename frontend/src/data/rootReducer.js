@@ -1,7 +1,8 @@
 // import individual reducers here
 import { popupsReducer } from './Popups/popupsReducer'
-import { compareReducer } from './Compare/compareReducer'
 import { fieldsReducer } from './Field/reducer'
+import { compareReducer } from './Compare/compareReducer'
+import { servicesReducer } from './Services/reducer'
 import { combineReducers } from 'redux'
 
 export const rootReducer = combineReducers({
@@ -11,6 +12,7 @@ export const rootReducer = combineReducers({
 	}),
 	domain: combineReducers({ 
 		compare: compareReducer,
+		services: servicesReducer,
 	})
 })
 // fields: fieldReducer,

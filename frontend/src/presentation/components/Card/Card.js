@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { routerContainer } from '../../containers/routerContainer' 
 import { popupContainer } from '../../containers/popupContainer'
+import { servicesContainer } from '../../containers/servicesContainer'
 import { Image } from '../Image/Image'
 import { Button } from '../Button/Button'
 import styles from './CardStyles.less'
@@ -12,13 +13,20 @@ import InfoPopup from '../InfoPopup/InfoPopup'
 import { getMessage } from '../../helper/messages'
 
 export class Card extends React.Component {
+	componentDidUpdate(prevProps) {
+		if (prevProps.checkboxValue !== this.props.checkboxValue) {
+			const { toggleSelectedService, checkboxValue, data: { _id } } = this.props
+			// console.log('updated', prevProps)
+			toggleSelectedService(_id, checkboxValue)
+		}
+	}
 	externalModalClick = () => {
 		this.props.openPopup('list-services-info')
 	}
 	render() {
 		const { checkboxValue, data: { _id, name, logo, membershipFee, avgPriceDay, gas, url: { signUp } }, basePath, push } = this.props// eslint-disable-line
 		return (
-			<Box classes={['box', 'row', 'grey-box', 'two', 'bottom-spacer', checkboxValue ? styles['card-border'] : '']}>
+			<Box classes={['box', 'row', 'grey-box', 'two', 'bottom-spacer', 'pad-lrg', checkboxValue ? styles['card-border'] : '']}>
 				<div className={styles['list-container']}>
 					<div className={styles['top-section']}>
 						<h3>{name}</h3>
@@ -33,10 +41,10 @@ export class Card extends React.Component {
 					
 					<Box classes={['box', 'row']}>
 						<Box classes={['box', 'row']}>
-							<a onClick={this.externalModalClick} target="_blank">More Details ></a>
+							<a onClick={() => push(`${name}`)} target="_blank">More Details ></a>
 						</Box>
 						<Box classes={['box', 'row']}>
-							<div className={styles['cta-button-container']}><Button click={() => push(`${name}`)} classes={['btn', 'secondary']}>Sign Up</Button></div>
+							<div className={styles['cta-button-container']}><Button click={this.externalModalClick} classes={['btn', 'secondary']}>Sign Up</Button></div>
 						</Box>
 					</Box>
 				</div>
@@ -59,10 +67,12 @@ export class Card extends React.Component {
 	}
 }
 
-const WithRouterCard = routerContainer(popupContainer(Card))
+const WithRouterCard = servicesContainer(routerContainer(popupContainer(Card)))
 
-const mapStateToProps = (state, { data: { _id } }) => ({
-	checkboxValue: state.ui.fields.getIn([_id, 'value'])
-})
+const mapStateToProps = (state, { data: { _id } }) => {
+	return ({
+		checkboxValue: state.ui.fields.getIn([_id, 'value'])
+	})
+}
 
 export default connect(mapStateToProps)(WithRouterCard)

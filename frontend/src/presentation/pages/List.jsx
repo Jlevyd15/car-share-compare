@@ -1,23 +1,21 @@
 import React, { Fragment, Component } from 'react'
 import axios from 'axios'
-
 import { getMessage } from '../helper/messages'
-
 import { Section } from '../components/Section/Section'
 import { Box } from '../components/Box/Box'
 import Card from '../components/Card/Card'
-
 import Popup from '../components/Popup/Popup'
 import { popupContainer } from '../containers/popupContainer'
+import { servicesContainer } from '../containers/servicesContainer'
 import InfoPopup from '../components/InfoPopup/InfoPopup'
-
 export class List extends Component {
 	constructor() {
 		super()
-		this.state = { loading: true, content: [] }
+		this.state = { loading: true }
 	}
 
-	componentDidMount() {
+	componentDidMount(prevProps) {
+		console.log('prevProps', prevProps)
 		// TODO - move into a saga
 		// debugger //eslint-disable-line no-debugger
 		this.fetchData()
@@ -26,31 +24,27 @@ export class List extends Component {
 
 	// TODO - async await not working
 	fetchData() {
-		// try {
-		// 	const result = await axios.get(`${this.props.basePath}/list`)
-		// 	if (result.error) {
-		// 		throw new Error('error fetching service data', result.error)
-		// 	}
-		// 	this.setState({ content: result, loading: false })
-		// } catch (error) {
-		// 	throw new Error('error fetching service data', error)
-		// }
 		axios.get(`${this.props.basePath}/list`)
 			.then(({ data }) => {
 				if (data['error']) console.log('error fetching service data', data['error'])
-				this.setState({ content: data['data']['ServiceData'], loading: false })
+				this.props.setServicesData(data['data']['ServiceData'])
+				this.setState({ loading: false })
 			})
 			.catch(err => {
 				throw new Error('error fetching service data', err)
 			})
 	}
-
+	formatServices = data => {
+		if (!data) return []
+		const _data = data.toJS()
+		return Object.keys(_data).map(service => _data[service])
+	}
 	getPageContent = basePath => {
-		if (this.state.content.length && !this.state.loading) {
-			return (this.state.content.map(serviceData => (
-				<Card key={serviceData._id} data={serviceData} basePath={basePath} />)))
+		if (this.props.services.size && !this.state.loading) {
+			return this.formatServices(this.props.services).map(({ data }) => 
+				<Card key={data._id} data={data} basePath={basePath} />)
 		} else {
-			return (<p>Loading</p>)
+			return (<p>Loading...</p>)
 		}
 	}
 
@@ -83,4 +77,4 @@ export class List extends Component {
 	}
 }
 
-export default popupContainer(List)
+export default servicesContainer(popupContainer(List))

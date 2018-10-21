@@ -32,7 +32,7 @@ class InfoPopup extends React.Component {
 	}
 }
 
-InfoPopup.PropTypes = {
+InfoPopup.propTypes = {
 	id: PropTypes.string,
 	icon: PropTypes.oneOfType(['info']),
 	heading: PropTypes.string,

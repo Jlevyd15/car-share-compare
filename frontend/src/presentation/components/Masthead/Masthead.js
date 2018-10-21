@@ -8,7 +8,7 @@ import { routerContainer } from '../../containers/routerContainer'
 import { DropdownMenu } from './../DropdownMenu/DropdownMenu'
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { HamburgerMenuIcon } from '../HamburgerMenuIcon/HamburgerMenuIcon'
-
+import CompareButton from '../CompareButton/CompareButton'
 export class Masthead extends Component {
 	constructor() {
 		super()
@@ -49,7 +49,7 @@ export class Masthead extends Component {
 	}
 
 	handleOverlayClick = ({ target }) => {
-		console.log('target ', target, )
+		// TODO - this has a bug if I click on the logo it open/closes the menu
 		if (target && target.innerHTML && target.innerHTML === 'Detail' || target.getAttribute('data-submenu') === 'true') {
 			return null
 		} else {
@@ -73,6 +73,7 @@ export class Masthead extends Component {
 						</ul>
 					</nav>
 				</div>
+				<CompareButton />
 				<div className={styles['hamburger-menu-container']}>
 					<HamburgerMenuIcon click={this.toggleHamMenuClick} menuOpen={this.state.menuOpen} />
 					<HamburgerMenu menuOpen={this.state.menuOpen} toggleSubMenu={this.toggleSubMenuClick} subMenuOpen={this.state.subMenuOpen} />

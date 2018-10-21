@@ -8,7 +8,7 @@ import { Switch, Route } from 'react-router-dom'
 import '../../styles/global'
 
 /* pages */
-import Landing from '../Landing'
+import Landing from '../Landing/Landing'
 import List from '../List'
 import Compare from '../Compare'
 import Detail from '../Detail'
@@ -35,7 +35,7 @@ export class PageLayout extends Component {
 						<Route exact path={routes.compare} component={Compare} />
 						<Route exact path={routes.about} component={About} />
 						<Route exact path={routes.contact} component={Contact} />
-						<Route path={routes.detail.route} component={Detail} />
+						<Route exact path={routes.detail.route} component={Detail} />
 						<Route component={NotFound} />
 					</Switch>
 				</main>
