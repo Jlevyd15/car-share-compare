@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
 import { popupContainer } from '../../containers/popupContainer'
-import Overlay from '../Overlay/Overlay'
 import { scrollBlocker } from '../../helper/scroll-blocker'
 
 import styles from './PopupStyles.less'
@@ -26,8 +25,8 @@ export class Popup extends Component {
 
 	componentDidUpdate(prevProps) {
 		const { open } = this.props
-		if (open !== prevProps.open && open) scrollBlocker() 
-		else scrollBlocker('add') 
+		if (open !== prevProps.open && open) scrollBlocker('add') 
+		else scrollBlocker() 
 	}
     
 	componentWillUnmount() {
@@ -38,7 +37,6 @@ export class Popup extends Component {
 		const { width, height, open, children } = this.props
 		return (
 			<React.Fragment>
-				<Overlay open={open} />
 				{ open ? createPortal(
 					<div className={styles['container']} style={{ height, width }}>
 						{children}

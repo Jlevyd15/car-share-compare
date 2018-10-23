@@ -1,10 +1,11 @@
 import React from 'react'
 import styles from './OverlayStyles.less'
+import { overlayContainer } from '../../containers/overlayContainer'
 
-const Overlay = ({ open }) => {
+const Overlay = ({ showOverlay }) => {
 	return (
-		open ? <div className={styles['dark-background']} /> : null
+		showOverlay ? <div className={styles['dark-background']} /> : null
 	)
 }
 
-export default Overlay
+export default overlayContainer(Overlay)

@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom'
 import styles from './MastheadStyles'
 import logoImg from '../../images/logos/carShare_text_logo_white.png'
 import { routerContainer } from '../../containers/routerContainer'
+import { popupContainer } from '../../containers/popupContainer'
 import { DropdownMenu } from './../DropdownMenu/DropdownMenu'
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
 import { HamburgerMenuIcon } from '../HamburgerMenuIcon/HamburgerMenuIcon'
 import CompareButton from '../CompareButton/CompareButton'
+
 export class Masthead extends Component {
 	constructor() {
 		super()
@@ -19,9 +21,11 @@ export class Masthead extends Component {
 	 * toggles the hamburger menu
 	 * menuOpen state controls the hamburger menu icon as well as the hamburger menu itself
 	 */
-	toggleHamMenuClick = e => {
-		this.setState({ menuOpen: !this.state.menuOpen })
-		this.toggleSubMenuClick(e, true)
+	toggleHamMenuClick = () => {
+		const { open, openPopup, closePopup } = this.props
+		// this.toggleSubMenuClick(e, true)
+		if (open) closePopup()
+		else openPopup()
 	}
 
 	/**
@@ -58,7 +62,7 @@ export class Masthead extends Component {
 	}
 
 	render() {
-		const { router: { pathname } } = this.props
+		const { router: { pathname }, open } = this.props
 		return (
 			<div onKeyDown={this.closeOnKeyDown} onClick={this.handleOverlayClick}>
 				<div className={`${pathname !== '/' ? styles['container'] + ' ' + styles['dark'] : styles['container']}`}>
@@ -75,12 +79,12 @@ export class Masthead extends Component {
 				</div>
 				<CompareButton />
 				<div className={styles['hamburger-menu-container']}>
-					<HamburgerMenuIcon click={this.toggleHamMenuClick} menuOpen={this.state.menuOpen} />
-					<HamburgerMenu menuOpen={this.state.menuOpen} toggleSubMenu={this.toggleSubMenuClick} subMenuOpen={this.state.subMenuOpen} />
+					<HamburgerMenuIcon click={this.toggleHamMenuClick} menuOpen={open} />
+					<HamburgerMenu menuOpen={open} toggleSubMenu={this.toggleSubMenuClick} subMenuOpen={this.state.subMenuOpen} />
 				</div>
 			</div>
 		)
 	}
 }
 
-export const WrappedMasthead = routerContainer(Masthead)
+export const WrappedMasthead = popupContainer(routerContainer(Masthead))

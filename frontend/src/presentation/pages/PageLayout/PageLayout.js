@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { routes } from '../../../project.config'
 import { Switch, Route } from 'react-router-dom'
 // import styles from './PageLayoutStyles'
-
+import Overlay from '../../components/Overlay/Overlay'
 // import the global styles
 import '../../styles/global'
 
@@ -27,7 +27,8 @@ export class PageLayout extends Component {
 	render() {
 		return (
 			<Fragment>
-				<WrappedMasthead />
+				<Overlay />
+				<WrappedMasthead id="masthead" />
 				<main>
 					<Switch>	
 						<Route exact path={routes.index} render={() => <Landing basePath={this.basePath} />} />

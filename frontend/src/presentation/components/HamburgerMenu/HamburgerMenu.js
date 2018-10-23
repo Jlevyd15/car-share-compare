@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import Overlay from '../Overlay/Overlay'
 import { routes } from '../../../project.config'
 import facebookLogo from '../../images/icons/square-facebook.svg'
 import twitterLogo from '../../images/icons/square-twitter.svg'
@@ -16,7 +15,6 @@ export class HamburgerMenu extends PureComponent {
 		const { menuOpen, subMenuOpen, toggleSubMenu } = this.props
 		return (
 			<React.Fragment>
-				<Overlay open={menuOpen}/>
 				<div className={`${styles['menu-container']} ${menuOpen ? styles['menu-container-active'] : ''}`}>
 					<div className={styles['nav-bar']}>
 						<ul>

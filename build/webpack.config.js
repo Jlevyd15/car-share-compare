@@ -48,7 +48,7 @@ module.exports = {
 						{ loader: 'less-loader' }
 					]
 				})
-			} : // in development mode we don't want to extract the css because we loose hmr
+			} : // in development mode we don't want to extract the css because we lose hmr
 				{
 					test: /\.(css|less)$/,
 					use: [
@@ -63,10 +63,6 @@ module.exports = {
 						{ loader: 'less-loader' }
 					]
 				},
-			// {
-			// 	test: /^((?!global).)*(\.css|\.less)$/,
-			// 	use: ['style-loader', 'css-loader', 'less-loader']
-			// },
 			// TODO - add additional config object for global css
 			// TODO - add autoprefixer
 			// TODO - add loader for sass/less
