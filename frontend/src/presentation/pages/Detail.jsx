@@ -1,14 +1,33 @@
 import React, { Component, Fragment } from 'react'
+// import { getMessage } from '../helper/messages'
+import { Section } from '../components/Section/Section'
+import { Box } from '../components/Box/Box'
+import MasonryCards from '../components/MasonryCards/MasonryCards'
+// import Popup from '../components/Popup/Popup'
+// import { popupContainer } from '../containers/popupContainer'
+// import { servicesContainer } from '../containers/servicesContainer'
+import { routerContainer } from '../containers/routerContainer'
 
-export class Landing extends Component {
+export class Detail extends Component {
+	// TODO - Fetch data for details page
 	render() {
 		return (
 			<Fragment>
-				<h1>Detail Page</h1>
-				<p>service name: {this.props.match.params.id}</p>
+				<Section style="three" maxWidthContainer={true}>
+					<div style={{ paddingTop: '50px' }}>
+						<Box styles={{ justifyContent: 'space-around' }} classes={['box', 'center', 'row', 'bottom-spacer']}>
+							<Box classes={['box', 'center', 'column', 'bottom-spacer']}>
+								{/* <Image imageSrc={} altText="steering wheel" classes={['medium']} /> */}
+							</Box>
+						</Box>
+					</div>
+					<Box styles={{ justifyContent: 'space-around' }} classes={['box', 'center', 'row', 'bottom-spacer']}>
+						<MasonryCards>Test Card</MasonryCards>
+					</Box>
+				</Section>
 			</Fragment>
 		)
 	}
 }
 
-export default Landing
+export default routerContainer(Detail)

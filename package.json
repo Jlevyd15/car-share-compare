@@ -89,5 +89,14 @@
       "@babel/env"
     ]
   },
-  "browserslist": "> 0.25%, not dead"
+	"browserslist": "> 0.25%, not dead",
+	"nodemonConfig": {
+		"ignore": [
+			"frontend/*",
+			"docs/*",
+			"_docs/*",
+			"node_modules/*"
+		],
+		"delay": "2500"
+	}
 }

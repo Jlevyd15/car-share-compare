@@ -1,7 +1,7 @@
 @import '../../styles/global.less';
 
 .menu-container {
-    z-index: 1;
+    z-index: 5;
     position: fixed;
     top: 0px;
     right: 0px;
@@ -17,7 +17,7 @@
 }
   
 .nav-bar {
-    z-index: 1;
+    z-index: 5;
     text-align: left;
     margin-bottom: 20px;
     position: fixed;
@@ -56,16 +56,15 @@
 .nav-bar li {
     background-color: @nav-light;
     width: 100%;
-    height: 45px;
-    cursor: pointer;
-    padding: 10px 0px 0px 5px;
-}
+	}
   
-.nav-bar a {
+	.nav-bar a {
+		height: 45px;
+		padding: 10px 0px 0px 5px;
     font-size: 1.5em;
     color: white;
     text-decoration: none;
-    height: 45px;
+		display: block;
 }
   
 .nav-bar li:hover, .nav-bar li.selected {

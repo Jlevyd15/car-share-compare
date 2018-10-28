@@ -14,12 +14,14 @@ export class Button extends Component {
 	}
 
 	render() {
-		const { classes, children } = this.props
+		const { classes, children, disabled } = this.props
 		return (
 			<button 
 				className={applyClasses(styles, classes)}
 				type="button"
 				onClick={this.handleClick}
+				disabled={disabled}
+				aria-disabled={disabled}
 			>
 				{children}
 			</button>

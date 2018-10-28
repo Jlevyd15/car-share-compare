@@ -1,6 +1,7 @@
 class ApiResponse {
-	buildRes(data = {}, error = '') {
+	buildRes({ data = {}, error = '', code }) {
 		const resObject = {
+			code,
 			error,
 			data
 		}

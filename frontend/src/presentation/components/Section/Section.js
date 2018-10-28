@@ -5,9 +5,13 @@ import styles from './SectionStyles'
 
 export class Section extends Component {
 	render() {
-		const { children, style } = this.props
+		const { children, style, maxWidthContainer } = this.props
 		return (
-			<section className={styles[`section-${style}`]}>
+			<section 
+				className={!maxWidthContainer ? 
+					styles[`section-${style}`] : 
+					styles[`section-${style}`] + ' ' + styles['max-container']}
+			>
 				{children}
 			</section>
 		)
@@ -16,5 +20,6 @@ export class Section extends Component {
 
 Section.propTypes = {
 	style: PropTypes.oneOf(['one', 'two', 'three', 'four', 'footer']),
-	children: PropTypes.node
+	children: PropTypes.node,
+	maxWidth: PropTypes.bool
 }

@@ -77,7 +77,7 @@ exports.postCompareData = (req, res) => {
 		} else {
 			app.locals.services = results
 			console.log('results are ' + results)
-			res.json(ApiResponse.buildRes({ 'services': results }))
+			res.json(ApiResponse.buildRes({ data: { 'services': results } }))
 			//res.render('compare', {'services':results})
 			// res.end()
 		}
@@ -107,7 +107,7 @@ exports.findAllServiceData = async (req, res) => {
 	// const html = await scraper.requestPage({ url: 'https://www.getaround.com/tour' })
 	// console.log('html', html)
 	if (!isProd) res.set({ 'Access-Control-Allow-Origin': '*' })
-	res.json(ApiResponse.buildRes({ ServiceData: mockData }))
+	res.json(ApiResponse.buildRes({ data: { ServiceData: mockData } }))
 }
 
 //get by id for detail page
@@ -120,10 +120,10 @@ exports.getDetailPage = (req, res) => {
 			// console.log('Error is ' + err)
 			res.send(ApiResponse.buildRes(undefined, err ? `Error, ${err}` : ''))      
 		} else if (!results.length){
-			res.status(404).json(ApiResponse.buildRes(undefined, 'could not find service by that name'))
+			res.status(404).json(ApiResponse.buildRes({ error: 'could not find service by that name' }))
 		} else {
 			// res.render('detail', { 'ServiceData': results })
-			res.json(ApiResponse.buildRes({ 'ServiceData': results }))
+			res.json(ApiResponse.buildRes({ data: { 'ServiceData': results } }))
 		}
 	})
 }
@@ -208,6 +208,5 @@ exports.signUp = function(req, res) {
 
 //Handle 404 - not found
 exports.notFound = function(req, res) {
-	/*log.info('in 404 route...')*/
-	res.sendStatus(404)
+	res.json(ApiResponse.buildRes({ error: 'Not Found', code: 404 }))
 }

@@ -3,7 +3,7 @@ import axios from 'axios'
 import { getMessage } from '../helper/messages'
 import { Section } from '../components/Section/Section'
 import { Box } from '../components/Box/Box'
-import Card from '../components/Card/Card'
+import SummaryCard from '../components/SummaryCard/SummaryCard'
 import Popup from '../components/Popup/Popup'
 import { popupContainer } from '../containers/popupContainer'
 import { servicesContainer } from '../containers/servicesContainer'
@@ -16,10 +16,15 @@ export class List extends Component {
 
 	componentDidMount(prevProps) {
 		console.log('prevProps', prevProps)
+		const { services, openPopup } = this.props
 		// TODO - move into a saga
-		// debugger //eslint-disable-line no-debugger
-		this.fetchData()
-		this.props.openPopup('list-initial-info')
+		// if data is already cached don't fetch it again
+		if (!services.size) {
+			this.fetchData()
+		} else {
+			this.setState({ loading: false })
+		}
+		openPopup('list-initial-info')
 	}
 
 	// TODO - async await not working
@@ -42,7 +47,7 @@ export class List extends Component {
 	getPageContent = basePath => {
 		if (this.props.services.size && !this.state.loading) {
 			return this.formatServices(this.props.services).map(({ data }) => 
-				<Card key={data._id} data={data} basePath={basePath} />)
+				<SummaryCard key={data._id} data={data} basePath={basePath} />)
 		} else {
 			return (<p>Loading...</p>)
 		}
@@ -51,7 +56,7 @@ export class List extends Component {
 	render() {
 		return (
 			<Fragment>
-				<Section style="three">
+				<Section style="three" maxWidthContainer={true}>
 					<div style={{ paddingTop: '50px' }}>
 						<Box styles={{ justifyContent: 'space-around' }} classes={['box', 'center', 'row', 'bottom-spacer']}>
 							<Box classes={['box', 'center', 'column', 'bottom-spacer']}>

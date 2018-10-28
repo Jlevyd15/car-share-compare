@@ -21,7 +21,7 @@ module.exports = function(app, Router){
 	app.get('/', indexController.getIndex)
 
 	//list page
-	Router.get('/list', indexController.findAllServiceData)
+	// Router.get('/list', indexController.findAllServiceData)
 	app.use(subdomain('api', Router))
 	app.get('/list', indexController.findAllServiceData)
 
@@ -41,12 +41,12 @@ module.exports = function(app, Router){
 	app.get('/signup', indexController.signUp)
 
 	//detail page
-	app.get('/:serviceName', indexController.getDetailPage)
+	app.get('/detail/:serviceName', indexController.getDetailPage)
 	//app.post('/detail', indexController.postDetailData)
 
 	app.get('/.well-known/acme-challenge/:id', indexController.challengeRoute)
 
-	app.get('/*', indexController.getIndex)
+	// app.get('/*', indexController.getIndex)
 
 	//catch 404
 	app.use('*', indexController.notFound)

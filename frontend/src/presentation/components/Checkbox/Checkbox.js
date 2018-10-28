@@ -24,7 +24,8 @@ class Checkbox extends Component {
 						id={`listChk-${id}`} 
 						onClick={this.handleClick} 
 						type="checkbox" 
-						value={value} 
+						value={value}
+						className={styles['checkbox']}
 					/>
 					<span></span>
 				</label>

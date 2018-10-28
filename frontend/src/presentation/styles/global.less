@@ -11,6 +11,9 @@ a {
 
 a {
 	text-decoration: none;
+	&:focus {
+		outline: @blue
+	}
 	line-height: 1.7;
 }
 
@@ -47,6 +50,7 @@ h3 {
 /* Screen Sizes */
 @small-screen: 768px;
 // @tablet-screen: '@media screen and (max-width: 768px) and (min-width: '
+@maxWidth: 1440px;
 
 :global {
 	.block-scroll {

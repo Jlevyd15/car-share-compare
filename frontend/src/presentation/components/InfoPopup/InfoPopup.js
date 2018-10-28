@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './InfoPopup.less'
-import closeBtn from '../../images/icons/close_circle_outline.svg'
+import closeBtn from '../../images/icons/close_circle_filled.svg'
 import { Button } from '../Button/Button'
 import { Image } from '../Image/Image'
 import { popupContainer } from '../../containers/popupContainer'
@@ -18,8 +18,8 @@ class InfoPopup extends React.Component {
 		const { id, icon, heading, body, children } = this.props
 		return (
 			<div id={id} className={styles['container']}>
-				<Button click={this.props.closePopup} classes={['utility']}>
-					<img src={closeBtn} alt="close popup" className={styles['close-btn']} />
+				<Button click={this.props.closePopup} classes={['utility', styles['close-btn']]}>
+					<img src={closeBtn} alt="close popup" />
 				</Button>
 				<div className={styles['header']}>
 					<Image imageSrc={this.iconMap[icon]['src']} altText={this.iconMap[icon]['alt']} />
