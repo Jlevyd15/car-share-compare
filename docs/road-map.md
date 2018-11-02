@@ -10,10 +10,10 @@
 
 
 ## Future road map
-- [ ] port pug templates to react components
-- [ ] add react router
-- [ ] introduce webpack v4 for build etc... remove gulp tasks
-- [ ] add Jest for testing
+- [X] port pug templates to react components
+- [X] add react router
+- [X] introduce webpack v4 for build etc... remove gulp tasks
+- [X] add Jest for testing
 - [ ] write tests for both server and frontend code
 - [ ] react server side rendering for landing page
 - [ ] re-write the server using ES6 
