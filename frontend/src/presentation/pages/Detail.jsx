@@ -5,11 +5,15 @@ import { Box } from '../components/Box/Box'
 import MasonryCards from '../components/MasonryCards/MasonryCards'
 // import Popup from '../components/Popup/Popup'
 // import { popupContainer } from '../containers/popupContainer'
-// import { servicesContainer } from '../containers/servicesContainer'
+import { servicesContainer } from '../containers/servicesContainer'
 import { routerContainer } from '../containers/routerContainer'
 
 export class Detail extends Component {
-	// TODO - Fetch data for details page
+	constructor() {
+		super()
+		this.state = { loading: true }
+	}
+
 	render() {
 		return (
 			<Fragment>
@@ -22,7 +26,7 @@ export class Detail extends Component {
 						</Box>
 					</div>
 					<Box styles={{ justifyContent: 'space-around' }} classes={['box', 'center', 'row', 'bottom-spacer']}>
-						<MasonryCards>Test Card</MasonryCards>
+						<MasonryCards>{this.props.services}</MasonryCards>
 					</Box>
 				</Section>
 			</Fragment>
@@ -30,4 +34,4 @@ export class Detail extends Component {
 	}
 }
 
-export default routerContainer(Detail)
+export default routerContainer(servicesContainer(Detail))

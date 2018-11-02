@@ -14,31 +14,31 @@ let contactFormSubmitReady = false
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const mockData = 
-	[
-		{
-			'_id': '57abde66036e3a3f9dadb712',
-			'name': 'Getaround',
-			'logo': '/images/assets/logos/getaround.png',
-			'membershipFee': '0',
-			'avgPriceDay': '48.00',
-			'gas': 'gas not included',
-			'url': {
-				'signUp': 'https://www.getaround.com/'
-			}
-		},
-		{
-			'_id': 'test123',
-			'name': 'Maven',
-			'logo': '/images/assets/logos/maven.png',
-			'membershipFee': '0',
-			'avgPriceDay': '48.00',
-			'gas': 'gas not included',
-			'url': {
-				'signUp': 'https://www.getaround.com/'
-			}
-		}
-	]
+// const mockData =
+// 	[
+// 		{
+// 			'_id': '57abde66036e3a3f9dadb712',
+// 			'name': 'Getaround',
+// 			'logo': '/images/assets/logos/getaround.png',
+// 			'membershipFee': '0',
+// 			'avgPriceDay': '48.00',
+// 			'gas': 'gas not included',
+// 			'url': {
+// 				'signUp': 'https://www.getaround.com/'
+// 			}
+// 		},
+// 		{
+// 			'_id': 'test123',
+// 			'name': 'Maven',
+// 			'logo': '/images/assets/logos/maven.png',
+// 			'membershipFee': '0',
+// 			'avgPriceDay': '48.00',
+// 			'gas': 'gas not included',
+// 			'url': {
+// 				'signUp': 'https://www.getaround.com/'
+// 			}
+// 		}
+// 	]
 //get the index page when user navigates to '/' route
 exports.getIndex = (req, res, next) => {
 	var options = {
@@ -73,7 +73,7 @@ exports.postCompareData = (req, res) => {
 	ServiceData.find({ '_id': { $in: serviceName } }, (err, results) => {
 		if (err) {
 			console.log('Error is ' + err)
-			res.send((err === null) ? { msg: '' } : { msg: 'Error, ' + err })        
+			res.send((err === null) ? { msg: '' } : { msg: 'Error, ' + err })
 		} else {
 			app.locals.services = results
 			console.log('results are ' + results)
@@ -96,18 +96,19 @@ exports.findAllServiceData = async (req, res) => {
 	// 		'gas': 1, 
 	// 		'url.signUp': 1
 	// 	}, (err, results) => {
-	// 		// console.log('results are ' + results)
-	// 		res.set({ 'Access-Control-Allow-Origin': '*' })
-	// 		res.json(ApiResponse.buildRes({ 'ServiceData': results }))
-	// 		// return res.render('list', { 'ServiceData': results })
+	// 		if (!isProd) res.set({ 'Access-Control-Allow-Origin': '*' })
+	// 		res.json(ApiResponse.buildRes({ data: { ServiceData: results } }))
 	// 	}
 	// )
-
+	ServiceData.find({}, {}, (err, results) => {
+		if (!isProd) res.set({ 'Access-Control-Allow-Origin': '*' })
+		res.json(ApiResponse.buildRes({ data: { ServiceData: results } }))
+	})
 	// const scraper = new Scraper()
 	// const html = await scraper.requestPage({ url: 'https://www.getaround.com/tour' })
 	// console.log('html', html)
-	if (!isProd) res.set({ 'Access-Control-Allow-Origin': '*' })
-	res.json(ApiResponse.buildRes({ data: { ServiceData: mockData } }))
+	// if (!isProd) res.set({ 'Access-Control-Allow-Origin': '*' })
+	// res.json(ApiResponse.buildRes({ data: { ServiceData: mockData } }))
 }
 
 //get by id for detail page
@@ -118,8 +119,8 @@ exports.getDetailPage = (req, res) => {
 		// console.log(results.length)
 		if (err) {
 			// console.log('Error is ' + err)
-			res.send(ApiResponse.buildRes(undefined, err ? `Error, ${err}` : ''))      
-		} else if (!results.length){
+			res.send(ApiResponse.buildRes({ error: err ? `Error, ${err}` : '' }))
+		} else if (!results.length) {
 			res.status(404).json(ApiResponse.buildRes({ error: 'could not find service by that name' }))
 		} else {
 			// res.render('detail', { 'ServiceData': results })
@@ -129,20 +130,20 @@ exports.getDetailPage = (req, res) => {
 }
 
 // TOOD - remove this
-exports.getAboutPage = function(req, res) {
+exports.getAboutPage = function (req, res) {
 	return res.render('about')
 }
 
-exports.getContactPage = function(req, res) {
-	var contactPageInterval = setInterval(function(){
+exports.getContactPage = function (req, res) {
+	var contactPageInterval = setInterval(function () {
 		contactFormSubmitReady = true
 		// console.log('form submit status: ' + contactFormSubmitReady)
 		clearInterval(contactPageInterval)
-	},10000)
+	}, 10000)
 	return res.render('contact')
 }
 
-exports.postContactMessage = function(req, res) {
+exports.postContactMessage = function (req, res) {
 	// console.log(req.connection.remoteAddress)
 	var mailOpts, transporter
 	transporter = nodemailer.createTransport({
@@ -161,10 +162,10 @@ exports.postContactMessage = function(req, res) {
 	}
 
 	// send message
-	transporter.sendMail(mailOpts, function(error) {
+	transporter.sendMail(mailOpts, function (error) {
 		//email not sent
 		if (error) {
-			res.send({ header: 'Error, Message Not Sent' , body: error.response })
+			res.send({ header: 'Error, Message Not Sent', body: error.response })
 		}
 		//Yay!! email sent
 		else {
@@ -173,40 +174,40 @@ exports.postContactMessage = function(req, res) {
 	})
 }
 
-exports.getAdminPage = function(req, res) {
+exports.getAdminPage = function (req, res) {
 	return res.render('admin')
 }
 
-exports.captchaTest = function(req, res) {
+exports.captchaTest = function (req, res) {
 	var captchaResponseCode = req.body.response
-	if( captchaResponseCode != undefined && captchaResponseCode != '' && captchaResponseCode != null){
-		var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret='+ process.env.CAPTCHA_SECRECT_KEY +'&response=' +captchaResponseCode
+	if (captchaResponseCode != undefined && captchaResponseCode != '' && captchaResponseCode != null) {
+		var verificationUrl = 'https://www.google.com/recaptcha/api/siteverify?secret=' + process.env.CAPTCHA_SECRECT_KEY + '&response=' + captchaResponseCode
 		// Hitting GET request to the URL, Google will respond with success or error scenario.
-		request(verificationUrl,function(error,response,body) {
+		request(verificationUrl, function (error, response, body) {
 			body = JSON.parse(body)
 			// Success will be true or false depending upon captcha validation.
-			if(body.success !== undefined && !body.success) {
-				res.send({ 'responseCode': 1,'responseDesc': 'Failed captcha verification' })
-			}else{
-				res.send({ 'responseCode': 0,'responseDesc': 'Success' })
+			if (body.success !== undefined && !body.success) {
+				res.send({ 'responseCode': 1, 'responseDesc': 'Failed captcha verification' })
+			} else {
+				res.send({ 'responseCode': 0, 'responseDesc': 'Success' })
 			}
 		})
-	}else{
-		res.send({ 'responseCode': 1,'responseDesc': 'Failed captcha verification' })
+	} else {
+		res.send({ 'responseCode': 1, 'responseDesc': 'Failed captcha verification' })
 	}
 }
 
 // for https cert challange
-exports.challengeRoute = function(req, res) {
+exports.challengeRoute = function (req, res) {
 	// console.log(req.params.id)
-	res.send(req.params.id+'.'+'75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc')
+	res.send(req.params.id + '.' + '75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc')
 }
 
-exports.signUp = function(req, res) {
+exports.signUp = function (req, res) {
 	res.render('signup')
 }
 
 //Handle 404 - not found
-exports.notFound = function(req, res) {
+exports.notFound = function (req, res) {
 	res.json(ApiResponse.buildRes({ error: 'Not Found', code: 404 }))
 }

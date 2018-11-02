@@ -4,6 +4,7 @@ import { routes } from '../../../project.config'
 import { Switch, Route } from 'react-router-dom'
 // import styles from './PageLayoutStyles'
 import Overlay from '../../components/Overlay/Overlay'
+import FetchServicesData from '../../components/FetchServicesData/FetchServicesData'
 // import the global styles
 import '../../styles/global'
 
@@ -27,6 +28,7 @@ export class PageLayout extends Component {
 	render() {
 		return (
 			<Fragment>
+				<FetchServicesData basePath={this.basePath} />
 				<Overlay />
 				<WrappedMasthead id="masthead" />
 				<main>

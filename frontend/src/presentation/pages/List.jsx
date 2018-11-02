@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from 'react'
-import axios from 'axios'
 import { getMessage } from '../helper/messages'
 import { Section } from '../components/Section/Section'
 import { Box } from '../components/Box/Box'
@@ -14,31 +13,27 @@ export class List extends Component {
 		this.state = { loading: true }
 	}
 
-	componentDidMount(prevProps) {
+	// componentDidMount(prevProps) {
+	// console.log('prevProps', prevProps)
+	// const { services, openPopup } = this.props
+	// // TODO - move into a saga
+	// // if data is already cached don't fetch it again
+	// debugger // eslint-disable-line
+	// if (services.size) this.setState({ loading: false })
+	// openPopup('list-initial-info')
+	// }
+
+	componentDidUpdate(prevProps) {
 		console.log('prevProps', prevProps)
 		const { services, openPopup } = this.props
-		// TODO - move into a saga
-		// if data is already cached don't fetch it again
-		if (!services.size) {
-			this.fetchData()
-		} else {
-			this.setState({ loading: false })
+		if (prevProps.services.size !== services.size) {
+			// TODO - move into a saga
+			// if data is already cached don't fetch it again
+			if (services.size) this.setState({ loading: false })
+			openPopup('list-initial-info')
 		}
-		openPopup('list-initial-info')
 	}
 
-	// TODO - async await not working
-	fetchData() {
-		axios.get(`${this.props.basePath}/list`)
-			.then(({ data }) => {
-				if (data['error']) console.log('error fetching service data', data['error'])
-				this.props.setServicesData(data['data']['ServiceData'])
-				this.setState({ loading: false })
-			})
-			.catch(err => {
-				throw new Error('error fetching service data', err)
-			})
-	}
 	formatServices = data => {
 		if (!data) return []
 		const _data = data.toJS()

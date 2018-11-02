@@ -12,7 +12,7 @@ import Card from '../Card/Card'
 import Popup from '../Popup/Popup'
 import InfoPopup from '../InfoPopup/InfoPopup'
 import { getMessage } from '../../helper/messages'
-
+import { formatMoney } from '../../helper/format'
 export class SummaryCard extends React.Component {
 	componentDidUpdate(prevProps) {
 		if (prevProps.checkboxValue !== this.props.checkboxValue) {
@@ -35,9 +35,9 @@ export class SummaryCard extends React.Component {
 					</div>
 					<Image imageSrc={`${basePath}/${logo}`} altText={name} classes={['medium']} />
 					<ul>
-						<li>{membershipFee}</li>
-						<li>{avgPriceDay}</li>
-						<li>{gas}</li>
+						<li>Membership fees: {formatMoney(membershipFee)}</li>
+						<li>rental rates from {formatMoney(avgPriceDay)} per day (8 hrs)</li>
+						<li>{gas} with rental</li>
 					</ul>
 
 					<Box classes={['box', 'row']}>

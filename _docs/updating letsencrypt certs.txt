@@ -1,8 +1,0 @@
-To update the certs for this site do the following steps.
------------------------------------------------------------------------------
-
-#1. sudo certbot certonly --manual
-	complete the challenges by using the route created for this.
-	replace the following with whatever the command line tells you.
-		res.send(req.params.id+'.'+"75Ufzyk1ouhSrCnxn_kqZfztkLiJ0aSrV18wpMJpqqc");
-#2. sudo heroku certs:update /etc/letsencrypt/live/carsharecompare.com/fullchain.pem /etc/letsencrypt/live/carsharecompare.com/privkey.pem --app car-share-compare
