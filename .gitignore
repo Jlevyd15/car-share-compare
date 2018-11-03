@@ -50,5 +50,5 @@ Temporary Items
 *.ps1
 /node_modules
 /docs
+_docs
 .env
-.env.swap
