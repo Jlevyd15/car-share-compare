@@ -8,9 +8,15 @@ import { popupContainer } from '../containers/popupContainer'
 import { servicesContainer } from '../containers/servicesContainer'
 import InfoPopup from '../components/InfoPopup/InfoPopup'
 export class List extends Component {
-	constructor() {
+	constructor(props) {
 		super()
 		this.state = { loading: true }
+		if (props.services.size) {
+			// TODO - move into a saga
+			// if data is already cached don't fetch it again
+			// if (props.services.size) this.setState({ loading: false })
+			props.openPopup('list-initial-info')
+		}
 	}
 
 	// componentDidMount(prevProps) {
@@ -23,16 +29,11 @@ export class List extends Component {
 	// openPopup('list-initial-info')
 	// }
 
-	componentDidUpdate(prevProps) {
-		console.log('prevProps', prevProps)
-		const { services, openPopup } = this.props
-		if (prevProps.services.size !== services.size) {
-			// TODO - move into a saga
-			// if data is already cached don't fetch it again
-			if (services.size) this.setState({ loading: false })
-			openPopup('list-initial-info')
-		}
-	}
+	// componentDidUpdate(prevProps) {
+	// 	const { services, openPopup } = this.props
+	// 	console.log('prevProps', prevProps.services.size, services.size)
+		
+	// }
 
 	formatServices = data => {
 		if (!data) return []
@@ -40,7 +41,7 @@ export class List extends Component {
 		return Object.keys(_data).map(service => _data[service])
 	}
 	getPageContent = basePath => {
-		if (this.props.services.size && !this.state.loading) {
+		if (this.props.services.size) {
 			return this.formatServices(this.props.services).map(({ data }) => 
 				<SummaryCard key={data._id} data={data} basePath={basePath} />)
 		} else {

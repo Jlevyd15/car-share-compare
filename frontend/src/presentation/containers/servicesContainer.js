@@ -9,6 +9,7 @@ const mapStateToProps = ({ domain }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+	fetchServicesData: url => dispatch(services.fetchData({ url })),
 	setServicesData: data => dispatch(services.setData({ data })),
 	toggleSelectedService: (id, selected) => dispatch(services.toggleSelected(id, { selected }))
 })
