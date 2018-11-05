@@ -28,7 +28,7 @@ class MasonryCards extends Component {
 		)
 	}
 	render() {
-		return this.buildColums()
+		return this.props.children ? this.buildColums() : null
 	}
 }
 
