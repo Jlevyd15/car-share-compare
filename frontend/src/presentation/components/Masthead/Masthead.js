@@ -59,6 +59,10 @@ export class Masthead extends Component {
 		}
 	}
 
+	getSelectedLink = link => {
+		return this.props.router.pathname === link || false
+	} 
+
 	render() {
 		const { router: { pathname }, open, push } = this.props
 		return (
@@ -68,11 +72,11 @@ export class Masthead extends Component {
 						<MastheadLogo pathname={pathname} routes={routes} />
 						<nav>
 							<ul>
-								<li><Link to={routes.index}>Home</Link></li>
-								<li><Link to={routes.list}>Compare</Link></li>
-								<li><DropdownMenu toggleSubMenu={this.toggleSubMenuClick} subMenuOpen={this.state.subMenuOpen} /></li>
-								<li><Link to={routes.about}>About</Link></li>
-								<li><Link to={routes.contact}>Contact</Link></li>
+								<li data-selected={this.getSelectedLink('/')}><Link to={routes.index}>Home</Link></li>
+								<li data-selected={this.getSelectedLink('/list')}><Link to={routes.list}>Compare</Link></li>
+								<li data-selected={this.getSelectedLink('detail')}><DropdownMenu toggleSubMenu={this.toggleSubMenuClick} subMenuOpen={this.state.subMenuOpen} /></li>
+								<li data-selected={this.getSelectedLink('/about')}><Link to={routes.about}>About</Link></li>
+								<li data-selected={this.getSelectedLink('/contact')}><Link to={routes.contact}>Contact</Link></li>
 							</ul>
 						</nav>
 					</div>
