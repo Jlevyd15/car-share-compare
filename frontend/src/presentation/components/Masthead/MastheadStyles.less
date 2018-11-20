@@ -38,33 +38,41 @@
 		padding: 0px;
 		margin: 0px;
 		width: 100%;
-			> li > a:hover {
-				list-style: none;
-				border-bottom: solid 5px transparent;
-				border-bottom: solid 5px @primary-blue;
-			}	
-			// > li:last-of-type > a {
-			// 	margin: 0px;
-			// }
-			> li {
-				float: left;
-				list-style: none;
-				// target both the top level links and sub menu links
+		> li > a:hover {
+			list-style: none;
+			border-bottom: solid 5px transparent;
+			border-bottom: solid 5px @primary-blue;
+		}	
+
+		> li {
+			float: left;
+			list-style: none;
+			// target both the top level links and sub menu links
+			&[data-selected="true"] {
 				a {
-					color: white;
-					font-size: 1.5em;
-					list-style: none;
-					padding-top: 10px;
-					margin-right: 20px;
-					text-decoration: none;
+					.selected-link();
 				}
-			
+			}
+			a {
+				color: white;
+				font-size: 1.5em;
+				list-style: none;
+				padding-top: 10px;
+				margin-right: 20px;
+				text-decoration: none;
+			}
+		
 			a:hover {
-				border-bottom: solid 5px @primary-blue;
+				.selected-link();
 			}
 		}
 	}
 }
+
+.selected-link() {
+	border-bottom: solid 5px @primary-blue;
+}
+
 .hamburger-menu-container {
 	display: none;
 }
