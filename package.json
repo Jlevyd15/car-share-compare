@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "compare car share services",
   "scripts": {
-    "server": "cross-env NODE_ENV=development nodemon ./server/app.js",
-    "client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js",
-    "start": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js\" \"cross-env NODE_ENV=development nodemon ./server/app.js\"",
-    "build": "cross-env NODE_ENV=production webpack --mode production --config build/webpack.config.js",
+    "OLD_server": "cross-env NODE_ENV=development nodemon ./server/app.js",
+    "server": "cross-env NODE_ENV=development webpack --config ./server/build/webpack.config.js",
+    "client": "cross-env NODE_ENV=development webpack-dev-server --config frontend/build/webpack.config.js",
+    "start": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --config frontend/build/webpack.config.js\" \"cross-env NODE_ENV=development nodemon ./server/app.js\"",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config frontend/build/webpack.config.js",
     "test": "jest --watch"
   },
   "repository": {

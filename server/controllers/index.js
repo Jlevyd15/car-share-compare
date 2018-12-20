@@ -10,7 +10,7 @@ const path = require('path')
 const ApiResponse = require('../helper/ApiResponse')
 // const Scraper = require('../helper/Scraper')
 
-let contactFormSubmitReady = false
+let contactFormSubmitReady = false // eslint-disable-line
 
 const isProd = process.env.NODE_ENV === 'production'
 

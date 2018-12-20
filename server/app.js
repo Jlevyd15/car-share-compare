@@ -8,7 +8,8 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 var mongoose = require('mongoose')
 require('dotenv').config()
-
+import react from 'react'
+console.log('react is defined', react)
 //set the port to run on one that is specified or 5000
 app.set('port', (process.env.PORT || 5000))
 
@@ -48,6 +49,7 @@ if (process.env.NODE_ENV === 'development') {
 			message: err.message,
 			error: err
 		})
+		next()
 	})
 }
 
@@ -59,6 +61,7 @@ app.use(function(err, req, res, next) {
 		message: err.message,
 		error: {}
 	})
+	next()
 })
 
 /*module.exports = app*/
